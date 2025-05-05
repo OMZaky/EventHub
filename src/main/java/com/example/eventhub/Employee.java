@@ -1,3 +1,4 @@
+package com.example.eventhub;
 
 import javafx.scene.layout.VBox;
 

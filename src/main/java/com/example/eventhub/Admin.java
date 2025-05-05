@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 
 
-public class Admin extends Person implements com.example.app_gui.Employee<Categories> {
+public class Admin extends Person implements Employee<Categories> {
     private final Calendar workBegin = Calendar.getInstance();
     private final Calendar workEnd = Calendar.getInstance();
     private String role;
@@ -56,10 +56,12 @@ public class Admin extends Person implements com.example.app_gui.Employee<Catego
     
     @Override
     public void create(String categoryName, VBox pwCategoryName){
+        /*
         Categories o = new Categories(categoryName,pwCategoryName);
         if (!o.getName().equals("<><><>")){
             Database.categories.add(o);
         }
+        */
     }
 
     @Override

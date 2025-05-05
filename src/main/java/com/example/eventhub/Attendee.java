@@ -1,8 +1,11 @@
 package com.example.eventhub;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Attendee extends Person {
+    static Scanner input = new Scanner(System.in);
+
     private final String address;
     private final Gender gender;
     private final ArrayList<String> interests;
@@ -129,7 +132,7 @@ public class Attendee extends Person {
                     System.out.println("Logging out...");
                     this.loggedIn = false;
                     System.out.println("You have logged out successfully.");
-                    App.main(null);
+
                 }
                 default -> System.out.println("Invalid choice. Please try again.");
             }
