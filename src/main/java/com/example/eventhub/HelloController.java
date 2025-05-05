@@ -52,7 +52,7 @@ public class HelloController extends Region {
 
     @FXML
     protected void loginbutton(){
-        String user = Person.LogIn(Username.getText(),Password.getText(), welcometext);
+        String user = Person.LogIn(Username.getText(),Password.getText(), Username_vbox, Password_vbox);
         System.out.println(user);
 
 

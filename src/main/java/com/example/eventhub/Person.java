@@ -47,7 +47,7 @@ public abstract class Person {
             return false;
         }
     }
-
+    /*
     public static String LogIn(String username, String password, Text text){
 
         while(true) {
@@ -80,9 +80,11 @@ public abstract class Person {
         }
     }
 
+     */
 
 
-    /*
+
+
     public static final String LogIn(String username, String password,VBox pwUsername,VBox pwPassword){
         
         while(true) {
@@ -94,8 +96,10 @@ public abstract class Person {
                 }
             }
             if (foundUser == null) {
-                pwUsername.getChildren().add(new Label("No user has this name"));
-                continue;
+                Text text = new Text("No user has this name");
+                text.setFill(Color.RED);
+                pwUsername.getChildren().add(text);
+                //continue;
             }
 
             PasswordCheck(foundUser , password, pwPassword);
@@ -110,10 +114,11 @@ public abstract class Person {
                     }
                 }
             }
-            return null;
+            return "null";
+
         }
     }
-    */
+
     public Person register(String username, String password, RadioButton gender,
                            String address, LocalDate time, String interest1, String interest2,
                            String interest3, String balance, VBox pwGender , VBox pwUsername, VBox pwBalance){
@@ -178,7 +183,7 @@ public abstract class Person {
         }
         return null;
     }
-
+    /*
     protected static void PasswordCheck(Person p, String password, Text text){
         if(p == null) System.out.println("null");
         if (password.equals(p.password)){
@@ -188,18 +193,20 @@ public abstract class Person {
         }
     }
 
+     */
 
-   /*
 
-protected static void PasswordCheck(Person p, String password, VBox pwPasswod){
+
+
+protected static void PasswordCheck(Person p, String password, VBox pwPassword){
     if (password.equals(p.password)){
         p.loggedIn = true;
     }else{
-    pwPasswod.getChildren().add(new Label("Please input the correct password"));
+    pwPassword.getChildren().add(new Label("Please input the correct password"));
     }   
 }
 
-    */
+
     public static boolean Checkusername(String username){
 
         while (true)
