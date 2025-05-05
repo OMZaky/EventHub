@@ -1,11 +1,12 @@
 package com.example.eventhub;
 
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
+import javafx.scene.text.Text;
 
 public class HelloController extends Region {
     public Button button1;
@@ -16,10 +17,18 @@ public class HelloController extends Region {
     @FXML private HBox RightHBox;
     @FXML private Line MyLine;
     @FXML private StackPane MyPane;
+    @FXML private TextField Username;
+    @FXML private PasswordField Password;
+    @FXML private VBox Username_vbox;
+    @FXML private VBox Password_vbox;
+    @FXML private Text welcometext;
+    @FXML private JFXButton login_button;
+    private Button button;
+
 
     public void initialize() {
 
-
+        login_button.disableProperty().bind(Username.textProperty().isEmpty().or(Password.textProperty().isEmpty()));
         imageContainer.setMinSize(300,300);
 
         MyLine.startYProperty().bind(MyPane.heightProperty().multiply(0.2));
@@ -39,6 +48,14 @@ public class HelloController extends Region {
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
+    }
+
+    @FXML
+    protected void loginbutton(){
+        String user = Person.LogIn(Username.getText(),Password.getText(), welcometext);
+        System.out.println(user);
+
+
     }
 
 

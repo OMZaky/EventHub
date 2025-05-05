@@ -1,13 +1,13 @@
 package com.example.eventhub;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 public abstract class Person {
     
@@ -48,6 +48,41 @@ public abstract class Person {
         }
     }
 
+    public static String LogIn(String username, String password, Text text){
+
+        while(true) {
+            Person foundUser = null;
+            for (Person p : Database.people) {
+                if (username.equals(p.username)) {
+                    foundUser = p;
+                    break;
+                }
+            }
+            if (foundUser == null) {
+                text.setText("Wrong Username");
+                text.setFill(Color.RED);
+                //continue;
+            }
+
+            PasswordCheck(foundUser , password, text);
+            if (foundUser.loggedIn) {
+                switch (foundUser) {
+                    case Attendee w -> {return "Attendee";}
+                    case Organizer w -> {return "Organizer";}
+                    case Admin w -> {return "Admin";}
+                    default -> {
+                        System.out.println("Error 404");
+                        return null;
+                    }
+                }
+            }
+
+        }
+    }
+
+
+
+    /*
     public static final String LogIn(String username, String password,VBox pwUsername,VBox pwPassword){
         
         while(true) {
@@ -78,10 +113,10 @@ public abstract class Person {
             return null;
         }
     }
-    
-    public Person regester(String username,String password,RadioButton gender,
-            String address,LocalDate time,String interest1,String interest2,
-            String interest3,String balance,VBox pwGender ,VBox pwUsername, VBox pwBalance){
+    */
+    public Person register(String username, String password, RadioButton gender,
+                           String address, LocalDate time, String interest1, String interest2,
+                           String interest3, String balance, VBox pwGender , VBox pwUsername, VBox pwBalance){
         
         boolean valid = true;
         if(!Person.Checkusername(username))
@@ -143,8 +178,18 @@ public abstract class Person {
         }
         return null;
     }
-    
-   
+
+    protected static void PasswordCheck(Person p, String password, Text text){
+        if(p == null) System.out.println("null");
+        if (password.equals(p.password)){
+            p.loggedIn = true;
+        }else{
+            text.setText("Wrong Password");
+        }
+    }
+
+
+   /*
 
 protected static void PasswordCheck(Person p, String password, VBox pwPasswod){
     if (password.equals(p.password)){
@@ -153,7 +198,8 @@ protected static void PasswordCheck(Person p, String password, VBox pwPasswod){
     pwPasswod.getChildren().add(new Label("Please input the correct password"));
     }   
 }
-    
+
+    */
     public static boolean Checkusername(String username){
 
         while (true)

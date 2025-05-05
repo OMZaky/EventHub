@@ -49,15 +49,15 @@
             <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="257.0" HBox.hgrow="ALWAYS">
                <children>
                   <Pane prefHeight="70.0" prefWidth="257.0" VBox.vgrow="ALWAYS" />
-                  <Text fill="#fbfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!" textAlignment="CENTER" wrappingWidth="200.13671875" VBox.vgrow="ALWAYS">
+                  <Text fx:id="welcometext" fill="#fbfcfc" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome Back!" textAlignment="CENTER" wrappingWidth="200.13671875" VBox.vgrow="ALWAYS">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
                   </Text>
                   <Pane prefHeight="31.0" prefWidth="257.0" VBox.vgrow="ALWAYS" />
-                  <VBox prefHeight="25.0" prefWidth="257.0">
+                  <VBox fx:id="Username_vbox" prefHeight="25.0" prefWidth="257.0">
                      <children>
-                        <TextField focusTraversable="false" prefHeight="25.0" prefWidth="257.0" promptText="Username" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                        <TextField fx:id="Username" focusTraversable="false" prefHeight="25.0" prefWidth="257.0" promptText="Username" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -65,13 +65,13 @@
                      </children>
                   </VBox>
                   <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="20.0" prefWidth="257.0" VBox.vgrow="SOMETIMES" />
-                  <VBox prefHeight="25.0" prefWidth="257.0">
+                  <VBox fx:id="Password_vbox" prefHeight="25.0" prefWidth="257.0">
                      <children>
-                        <PasswordField focusTraversable="false" prefHeight="25.0" prefWidth="257.0" promptText="Password" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS" />
+                        <PasswordField fx:id="Password" focusTraversable="false" prefHeight="25.0" prefWidth="257.0" promptText="Password" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                   <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="31.0" prefWidth="257.0" VBox.vgrow="ALWAYS" />
-                  <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="257.0" style="-fx-background-color: #6ED9A0;" text="Login" textAlignment="CENTER" textFill="#fbfcfc" VBox.vgrow="ALWAYS">
+                  <JFXButton fx:id="login_button" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginbutton" prefHeight="41.0" prefWidth="257.0" style="-fx-background-color: #6ED9A0;" text="Login" textAlignment="CENTER" textFill="#fbfcfc" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="20.0" />
                      </font>
