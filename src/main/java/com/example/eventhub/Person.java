@@ -86,8 +86,10 @@ public abstract class Person {
 
 
     public static final String LogIn(String username, String password,VBox pwUsername,VBox pwPassword){
-        
-        while(true) {
+
+        pwUsername.getChildren().removeIf(node -> node instanceof Text);
+        pwPassword.getChildren().removeIf(node -> node instanceof Text);
+
             Person foundUser = null;
             for (Person p : Database.people) {
                 if (username.equals(p.username)) {
@@ -96,10 +98,10 @@ public abstract class Person {
                 }
             }
             if (foundUser == null) {
-                Text text = new Text("No user has this name");
+                Text text = new Text("Username Not Found");
                 text.setFill(Color.RED);
                 pwUsername.getChildren().add(text);
-                //continue;
+                return "null";
             }
 
             PasswordCheck(foundUser , password, pwPassword);
@@ -113,10 +115,9 @@ public abstract class Person {
                         return null;
                     }
                 }
-            }
-            return "null";
+            }else return "null";
 
-        }
+
     }
 
     public Person register(String username, String password, RadioButton gender,
@@ -201,9 +202,11 @@ public abstract class Person {
 protected static void PasswordCheck(Person p, String password, VBox pwPassword){
     if (password.equals(p.password)){
         p.loggedIn = true;
-    }else{
-    pwPassword.getChildren().add(new Label("Please input the correct password"));
-    }   
+    } else{
+        Text text = new Text("Password Is Incorrect");
+        text.setFill(Color.RED);
+        pwPassword.getChildren().add(text);
+    }
 }
 
 
