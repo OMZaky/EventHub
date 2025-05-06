@@ -11,14 +11,13 @@ import java.util.*;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Register.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        SceneManager sceneManager = new SceneManager(stage);
+        sceneManager.switchToLogin(); // Start with the login scene
         stage.setTitle("APP");
         stage.setWidth(700);
         stage.setHeight(450);
         stage.setMinHeight(400);
         stage.setMinWidth(650);
-        stage.setScene(scene);
         stage.show();
     }
 
