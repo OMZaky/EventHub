@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2A363F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eventhub.RegisterController">
+   <children>
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+         <children>
+            <HBox prefHeight="400.0" prefWidth="10.0" />
+            <VBox prefHeight="400.0" prefWidth="100.0" HBox.hgrow="NEVER">
+               <children>
+                  <StackPane prefHeight="56.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="100.0" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <StackPane prefHeight="35.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="100.0" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <StackPane prefHeight="35.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Of Birth:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="100.0" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <StackPane prefHeight="35.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="100.0" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <StackPane prefHeight="35.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Gender:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="100.0" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <StackPane prefHeight="85.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <HBox prefHeight="400.0" prefWidth="10.0" HBox.hgrow="NEVER" />
+            <VBox prefHeight="400.0" prefWidth="150.0" HBox.hgrow="SOMETIMES">
+               <children>
+                  <StackPane prefHeight="48.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
+                  <TextField focusTraversable="false" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                  <TextField focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                  <DatePicker maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="150.0" stylesheets="@Login.css" VBox.vgrow="ALWAYS" />
+                  <StackPane prefHeight="25.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
+                  <TextField focusTraversable="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </TextField>
+                  <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                  <JFXRadioButton text="Male" textFill="WHITE" VBox.vgrow="ALWAYS" />
+                  <StackPane prefHeight="13.0" prefWidth="150.0" VBox.vgrow="SOMETIMES" />
+                  <JFXRadioButton text="Female" textFill="WHITE" VBox.vgrow="ALWAYS" />
+                  <StackPane prefHeight="55.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+            <HBox prefHeight="400.0" prefWidth="30.0" HBox.hgrow="SOMETIMES">
+               <children>
+                  <StackPane prefHeight="400.0" prefWidth="5.0" HBox.hgrow="SOMETIMES" />
+                  <StackPane fx:id="MyPane" prefHeight="400.0" prefWidth="15.0" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Line fx:id="MyLine" endY="300.0" startY="25.0" stroke="#465058" strokeWidth="2.0" />
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <VBox prefHeight="200.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+         <children>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="280.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <VBox prefHeight="400.0" prefWidth="100.0" HBox.hgrow="NEVER">
+                     <children>
+                        <StackPane prefHeight="48.0" prefWidth="130.0" VBox.vgrow="ALWAYS" />
+                        <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Address:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="130.0" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <StackPane prefHeight="35.0" prefWidth="130.0" VBox.vgrow="ALWAYS" />
+                        <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Personality Trait 1:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="130.0" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <StackPane prefHeight="35.0" prefWidth="130.0" VBox.vgrow="ALWAYS" />
+                        <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Personality Trait 2:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="130.0" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <StackPane prefHeight="35.0" prefWidth="130.0" VBox.vgrow="ALWAYS" />
+                        <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Personality Trait 3:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="130.0" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                        <StackPane prefHeight="8.0" prefWidth="130.0" />
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="400.0" prefWidth="20.0" HBox.hgrow="NEVER" />
+                  <VBox prefHeight="400.0" prefWidth="150.0" HBox.hgrow="SOMETIMES">
+                     <children>
+                        <StackPane prefHeight="43.0" prefWidth="144.0" VBox.vgrow="ALWAYS" />
+                        <TextField focusTraversable="false" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextField>
+                        <StackPane prefHeight="25.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
+                        <TextField focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextField>
+                        <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
+                        <TextField focusTraversable="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextField>
+                        <StackPane prefHeight="25.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
+                        <TextField focusTraversable="false" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css">
+                           <font>
+                              <Font size="17.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </VBox>
+                  <HBox prefHeight="400.0" prefWidth="20.0" HBox.hgrow="SOMETIMES" />
+               </children>
+            </HBox>
+            <VBox prefHeight="120.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+               <children>
+                  <StackPane prefHeight="20.0" prefWidth="300.0" VBox.vgrow="ALWAYS" />
+                  <StackPane prefHeight="60.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <JFXButton fx:id="login_button" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="257.0" style="-fx-background-color: #6ED9A0;" text="Register" textAlignment="CENTER" textFill="#fbfcfc">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="40.0" prefWidth="300.0" VBox.vgrow="ALWAYS" />
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>
