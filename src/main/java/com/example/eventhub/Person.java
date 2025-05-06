@@ -241,7 +241,6 @@ protected static void PasswordCheck(Person p, String password, VBox pwPassword){
     }
     
 
-    protected abstract void homeScreen();
     protected void setUsername(String username){
         this.username = username;
     }

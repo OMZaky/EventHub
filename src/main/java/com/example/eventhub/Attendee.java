@@ -13,11 +13,13 @@ public class Attendee extends Person {
     private Wallet wallet;
     boolean buysuccess = false;
 
-    Attendee() {
+    public Attendee() {
         this(null, null, null, null, null, null, 0, 0, 0);
     }
-    
-   
+
+
+
+
     Attendee(Wallet wallet, Gender gender, String address, ArrayList<String> interests, String username,String password, int yearOfBirth, int monthOfBirth, int dayOfBirth) {
         super(username, password, yearOfBirth, monthOfBirth, dayOfBirth);
         this.wallet = wallet;
@@ -80,7 +82,12 @@ public class Attendee extends Person {
     }
 
 
+
+
+    /*
+
     @Override
+
     public void homeScreen() {
 
         while(true){
@@ -142,6 +149,8 @@ public class Attendee extends Person {
 
     }
 
+
+     */
 
     }
 

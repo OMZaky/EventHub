@@ -178,7 +178,7 @@ public class Organizer extends Person implements Employee<Event> {
                 '}';
     }
     
-
+    /*
     @Override
     public void homeScreen() {
         for(Event e:Database.events){
@@ -247,6 +247,7 @@ public class Organizer extends Person implements Employee<Event> {
 
         }
     }
+    */
     public Wallet getWallet(){
     return this.wallet;
     }

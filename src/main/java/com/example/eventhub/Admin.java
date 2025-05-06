@@ -119,7 +119,7 @@ public class Admin extends Person implements Employee<Categories> {
         
     return adminInfo;
     }
-    
+    /*
     public void homeScreen(){
     ArrayList<String> attendees = new ArrayList<>();
     ArrayList<String> organizers = new ArrayList<>();
@@ -145,6 +145,8 @@ public class Admin extends Person implements Employee<Categories> {
         System.out.printf("%-20s %-20s %-20s%n", attendee, organizer, event);
     }
     }
+
+     */
     
     private ArrayList<String> categorySelection(String mode){
         ArrayList<String> categoriesListForComboBox = new ArrayList<>(1000);
