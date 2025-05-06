@@ -4,9 +4,12 @@ import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+
 
 public class HelloController extends Region {
     public Button button1;
@@ -23,7 +26,7 @@ public class HelloController extends Region {
     @FXML private VBox Password_vbox;
     @FXML private Text welcometext;
     @FXML private JFXButton login_button;
-    private Button button;
+    private String user;
 
 
     public void initialize() {
@@ -43,6 +46,8 @@ public class HelloController extends Region {
 
         // Ensure the image preserves its aspect ratio
         logoImage.setPreserveRatio(true);
+
+        Password.setOnKeyPressed(this::handleEnterKeyPress);
     }
 
     @FXML
@@ -50,9 +55,17 @@ public class HelloController extends Region {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
+    private void handleEnterKeyPress(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            user = Person.LogIn(Username.getText(),Password.getText(), Username_vbox, Password_vbox);
+        }
+    }
+
+
+
     @FXML
     protected void loginbutton(){
-        String user = Person.LogIn(Username.getText(),Password.getText(), Username_vbox, Password_vbox);
+        user = Person.LogIn(Username.getText(),Password.getText(), Username_vbox, Password_vbox);
         System.out.println(user);
 
 

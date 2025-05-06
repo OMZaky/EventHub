@@ -7,7 +7,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public abstract class Person {
     
@@ -100,6 +103,7 @@ public abstract class Person {
             if (foundUser == null) {
                 Text text = new Text("Username Not Found");
                 text.setFill(Color.RED);
+                text.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
                 pwUsername.getChildren().add(text);
                 return "null";
             }
@@ -205,6 +209,7 @@ protected static void PasswordCheck(Person p, String password, VBox pwPassword){
     } else{
         Text text = new Text("Password Is Incorrect");
         text.setFill(Color.RED);
+        text.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
         pwPassword.getChildren().add(text);
     }
 }
