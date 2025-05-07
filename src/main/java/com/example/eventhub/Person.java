@@ -90,7 +90,7 @@ public abstract class Person {
 
 
 
-    public static final String LogIn(String username, String password,VBox pwUsername,VBox pwPassword){
+    public static final Person LogIn(String username, String password,VBox pwUsername,VBox pwPassword){
 
         pwUsername.getChildren().removeIf(node -> node instanceof Text);
         pwPassword.getChildren().removeIf(node -> node instanceof Text);
@@ -107,21 +107,13 @@ public abstract class Person {
                 text.setFill(Color.RED);
                 text.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
                 pwUsername.getChildren().add(text);
-                return "null";
+                return null;
             }
 
             PasswordCheck(foundUser , password, pwPassword);
             if (foundUser.loggedIn) {
-                switch (foundUser) {
-                    case Attendee w -> {return "Attendee";}
-                    case Organizer w -> {return "Organizer";}
-                    case Admin w -> {return "Admin";}
-                    default -> {
-                        System.out.println("Error 404");
-                        return null;
-                    }
-                }
-            }else return "null";
+                return foundUser;
+            }else return null;
 
 
     }

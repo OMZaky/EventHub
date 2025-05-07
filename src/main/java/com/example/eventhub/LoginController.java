@@ -10,6 +10,8 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
+import static javafx.application.Platform.exit;
+
 
 public class LoginController implements SceneController{
     @FXML
@@ -36,7 +38,7 @@ public class LoginController implements SceneController{
     private Text welcometext;
     @FXML
     private JFXButton login_button;
-    private String user = "null";
+    private Person user = null;
     private SceneManager sceneManager;
 
 
@@ -70,12 +72,33 @@ public class LoginController implements SceneController{
 
 
     @FXML
-    protected void loginbutton() {
-        while (user.equals("null")) {
-            user = Person.LogIn(Username.getText(), Password.getText(), Username_vbox, Password_vbox);
-        }
-        sceneManager.switchToAttendeeDashboard();
+    protected void loginbutton() throws NullPointerException {
+        user = Person.LogIn(Username.getText(), Password.getText(), Username_vbox, Password_vbox);
 
+        if (user == null) {
+            return;
+        }
+        switch (user) {
+            case Attendee w -> sceneManager.switchToAttendeeHscreen(w);
+            //case Organizer w -> sceneManager.switchToOrganizerHscreen(w);
+            //case Admin w -> sceneManager.switchToAdminHscreen(w);
+            default -> {
+                exit(); // Only exit if absolutely necessary
+            }
+        }
+
+
+
+    }
+
+
+    // This is cool, might be useful
+    private void showError(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Login Error");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     public void setSceneManager(SceneManager sceneManager) {

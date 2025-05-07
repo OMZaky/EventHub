@@ -15,7 +15,11 @@ public class SceneManager {
     private AttendeeHscreen attendeeHscreen;
     private AttendeeInfo attendeeInfo;
     private Buy_Tickets buyTickets;
+    private Scene logoutScene;
 
+    FXMLLoader logoutLoader = new FXMLLoader(getClass().getResource("Logout.fxml"));
+    Parent logoutRoot = logoutLoader.load();
+    LogoutController logoutController = logoutLoader.getController();
 
 
 
@@ -38,6 +42,11 @@ public class SceneManager {
         RegisterController registerController = registerLoader.getController();
         registerController.setSceneManager(this);
         registerScene = new Scene(registerRoot, 320, 240);
+
+        // Load Logout Scene
+
+        logoutController.setSceneManager(this);
+        logoutScene = new Scene(logoutRoot, 320, 240);
 
         // Initialize other scenes
         attendeeDashboard = new Attendee_Dashboard(this);
@@ -68,6 +77,12 @@ public class SceneManager {
 
     public void switchToLogin() {
         primaryStage.setScene(loginScene);
+    }
+
+    public void switchToLogout(Person a){
+        logoutController.setPerson(a);
+        primaryStage.setScene(logoutScene);
+
     }
 
 }
