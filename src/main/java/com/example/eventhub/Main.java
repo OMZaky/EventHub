@@ -44,9 +44,9 @@ public class Main extends Application {
          Room room2 = new Room(60);
          Room room3 = new Room(30);
 
-         Categories Wedding = new Categories("Wedding");
-         Categories Birthday = new Categories("Birthday Party");
-         Categories Conference = new Categories("Conference");
+         Categories Wedding = new Categories("Wedding", null);
+         Categories Birthday = new Categories("Birthday Party", null);
+         Categories Conference = new Categories("Conference", null);
 
          Organizer organizer1 = new Organizer("Maged", "MyPassword", 3, 3, 2000, 50000);
          Organizer organizer2 = new Organizer("Farah", "MyPassword", 4, 4, 2000, 40000);

@@ -157,5 +157,88 @@ public Room(int capacity) {
             }
         } while (true); // Loop until a valid choice is made or cancelled
     }
-  
+    // public String[][] getAvailableRooms(){
+//         ArrayList<String[]> availableDatesList = new ArrayList<>();
+//         System.out.println("Available Days (from today to end of month):");
+//         int startDay = Math.min(today + 3, maxDay);
+//         for (int day = startDay; day < maxDay; day++) {
+//             boolean isMorningAvailable = true;
+//             boolean isNightAvailable = true;
+//             calendar.set(Calendar.DAY_OF_MONTH, day);
+//             Date currentDate = calendar.getTime();
+//             String theDate = dateFormat.format(currentDate);
+
+//             for (Reservations r : unavalabledates) {
+//                 if (dateFormat.format(currentDate).equals(dateFormat.format(r.getReservationTime().getTime()))) {
+//                     if (!r.getDayAvailability()) {
+//                         isMorningAvailable = false;
+//                     }
+//                     if (!r.getNightAvailability()) {
+//                         isNightAvailable = false;
+//                     }
+//                 }
+//             }
+
+//             if (isMorningAvailable) {
+//                 availableDatesList.add(new String[]{theDate + " - Morning", null});
+//             }
+//             if (isNightAvailable) {
+//                 availableDatesList.add(new String[]{null, theDate + " - Night"});
+//             }
+//         }
+
+//         return availableDatesList.toArray(new String[0][0]);
+// }
+
+// public String chooseAvailableTime() {
+//     ArrayList<String[]> availableDates = new ArrayList<>();
+//     System.out.println("Available Days (from today to end of month):");
+//     int k = 1;
+//     for (int day = Math.min(today + 3, maxDay); day <= maxDay; day++) {
+//         calendar.set(Calendar.DAY_OF_MONTH, day);
+//     String[][] availableRooms = getAvailableRooms();
+//     System.out.println("Available Days (from today to end of month):");
+//     for (int i = 0; i < availableRooms.length; i++) {
+//         String morning = availableRooms[i][0] != null ? availableRooms[i][0] : "";
+//         String night = availableRooms[i][1] != null ? availableRooms[i][1] : "";
+//         if (!morning.isEmpty()) {
+//             System.out.println((i * 2 + 1) + ": " + morning);
+//         }
+//         if (!night.isEmpty()) {
+//             System.out.println((i * 2 + 2) + ": " + night);
+//             }
+//         }
+
+//         System.out.println("Please input one of these times to reserve (or 0 to cancel):");
+//         String choice;
+//         int choiceInt;
+//         do {
+//             choice = input.nextLine();
+//             if (!choice.matches("\\d+")) {
+//                 System.out.println("Invalid input. Please enter a numeric value.");
+//                 choiceInt = -1; // Invalid choice to continue the loop
+//                 continue;
+//             }
+//             choiceInt = Integer.parseInt(choice);
+//             if (choiceInt == 0) {
+//                 System.out.println("Reservation cancelled.");
+//                 return null;
+//             }
+//             int index = (choiceInt - 1) / 2;
+//             boolean isMorning = (choiceInt % 2) == 1;
+
+//             if (index >= 0 && index < availableRooms.length) {
+//                 String selectedTime = isMorning ? availableRooms[index][0] : availableRooms[index][1];
+//                 if (selectedTime != null) {
+//                     return selectedTime;
+//                 } else {
+//                     System.out.println("Selected time is not available. Please try again.");
+//                 }
+//             } else {
+//                 System.out.println("Please choose a number in the range of available options.");
+//             }
+//         } while (true);
+//     }
+//     return null;
+// }
 }

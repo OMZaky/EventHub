@@ -1,13 +1,8 @@
 package com.example.eventhub;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
 import java.util.*;
 
-public class Dummies {
+public class Old_Main {
 
 
     static Scanner input = new Scanner(System.in);
@@ -31,9 +26,9 @@ public class Dummies {
     static Room room2 = new Room(60);
     static Room room3 = new Room(30);
 
-    static Categories Wedding = new Categories("Wedding");
-    static Categories Birthday = new Categories("Birthday Party");
-    static Categories Conference = new Categories("Conference");
+    static Categories Wedding = new Categories("Wedding", null);
+    static Categories Birthday = new Categories("Birthday Party", null);
+    static Categories Conference = new Categories("Conference", null);
 
     static Organizer organizer1 = new Organizer("Maged", "MyPassword", 3, 3, 2000, 50000);
     static Organizer organizer2 = new Organizer("Farah", "MyPassword", 4, 4, 2000, 40000);
