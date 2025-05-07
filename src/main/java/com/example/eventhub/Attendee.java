@@ -50,6 +50,11 @@ public class Attendee extends Person {
         this.myevents = myevents;
     }
 
+    public ArrayList<String> getInterests() {
+        return interests;
+    }
+
+
     public void buy(Event event){
         if (this.wallet.getBalance() >= event.getTicketPrice()){
             if(event.getAttendeeNum() < event.getRoom().getCapacity()){

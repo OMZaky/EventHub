@@ -12,26 +12,12 @@ public class SceneManager {
     private Attendee_Dashboard attendeeDashboard;
     private Scene loginScene;
     private Scene registerScene;
+    private AttendeeHscreen attendeeHscreen;
+    private AttendeeInfo attendeeInfo;
+    private Buy_Tickets buyTickets;
 
-//    FXMLLoader fxmlRegister = new FXMLLoader(getClass().getResource("Register.fxml"));
-//    Scene RegisterScene = new Scene(fxmlRegister.load(), 320, 240);
-//
-//    LoginController RegisterController = fxmlRegister.getController();
-//
-//    {
-//        RegisterController.setSceneManager(this);
-//    }
-//
-//
-//
-//    FXMLLoader fxmlLogin = new FXMLLoader(getClass().getResource("Login.fxml"));
-//    Scene LoginScene = new Scene(fxmlLogin.load(), 320, 240);
-//
-//    LoginController loginController = fxmlLogin.getController();
-//
-//    {
-//        loginController.setSceneManager(this);
-//    }
+
+
 
     public SceneManager(Stage primaryStage) throws IOException {
         this.primaryStage = primaryStage;
@@ -55,6 +41,21 @@ public class SceneManager {
 
         // Initialize other scenes
         attendeeDashboard = new Attendee_Dashboard(this);
+    }
+
+    public void switchToAttendeeHscreen(Attendee a) {
+        attendeeHscreen = new AttendeeHscreen(a, this);
+        primaryStage.setScene(attendeeHscreen.getScene());
+    }
+
+    public void switchToAttendeeInfo(Attendee a) {
+        attendeeInfo = new AttendeeInfo(a, this);
+        primaryStage.setScene(attendeeInfo.getScene());
+    }
+
+    public void switchToBuyTickets(Attendee a) {
+        buyTickets = new Buy_Tickets(a, this);
+        primaryStage.setScene(buyTickets.getScene());
     }
 
     public void switchToAttendeeDashboard() {
