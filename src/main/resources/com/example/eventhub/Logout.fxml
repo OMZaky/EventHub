@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2A363F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eventhub.LoginController">
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2A363F;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eventhub.LogoutController">
    <children>
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="100.0" HBox.hgrow="ALWAYS" />
       <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" HBox.hgrow="ALWAYS">
@@ -23,13 +23,13 @@
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="45.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
                <children>
                   <StackPane prefHeight="45.0" prefWidth="25.0" HBox.hgrow="ALWAYS" />
-                  <JFXButton fx:id="login_button1" buttonType="RAISED" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginbutton" prefHeight="45.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: c62020;" text="Logout" textAlignment="CENTER" textFill="#fafafa" HBox.hgrow="ALWAYS">
+                  <JFXButton fx:id="login_button1" buttonType="RAISED" minHeight="-Infinity" minWidth="-Infinity" onAction="#LogoutButton" prefHeight="45.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: c62020;" text="Logout" textAlignment="CENTER" textFill="#fafafa" HBox.hgrow="ALWAYS">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </JFXButton>
                   <StackPane prefHeight="45.0" prefWidth="50.0" HBox.hgrow="ALWAYS" />
-                  <JFXButton fx:id="login_button" buttonType="RAISED" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginbutton" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #6ED9A0;" text="Go Back" textAlignment="CENTER" textFill="#fbfcfc" HBox.hgrow="SOMETIMES">
+                  <JFXButton fx:id="login_button" buttonType="RAISED" minHeight="-Infinity" minWidth="-Infinity" onAction="#GoBackButton" prefHeight="45.0" prefWidth="150.0" style="-fx-background-color: #6ED9A0;" text="Go Back" textAlignment="CENTER" textFill="#fbfcfc" HBox.hgrow="SOMETIMES">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>

@@ -3,10 +3,13 @@ package com.example.eventhub;/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 import com.jfoenix.controls.JFXButton;
+import java.util.ArrayList;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -64,6 +67,9 @@ public class Buy_Tickets{
                         ButtonsVbox.setPadding(new Insets(ButtonPadding,0,0,0));
                 });
 
+                UserInfoBut.setOnAction(e -> sceneManager.switchToAttendeeInfo(a));
+
+
 
                 JFXButton BuyBut = new JFXButton("Buy Tickets");
                 BuyBut.disableProperty().set(true);
@@ -84,6 +90,9 @@ public class Buy_Tickets{
                         VBox.setMargin(LogOutBut, new Insets(ButtonMar,0,0,0));
                 });
 
+                LogOutBut.setOnAction(e -> sceneManager.switchToLogout(a));
+
+
 
                 ButtonsVbox.getChildren().addAll(UserInfoBut,BuyBut,LogOutBut);
 
@@ -98,6 +107,51 @@ public class Buy_Tickets{
 
                 linePane.getChildren().add(l);
                 BorPane.setLeft(leftHbox);
+
+                ScrollPane scroller = new ScrollPane();
+                scroller.setFitToWidth(true);
+                scroller.setFitToHeight(true);
+                scroller.setStyle("-fx-background: #2A363F; -fx-background-color: #2A363F;");
+                ArrayList<Event> events = a.getBuyableEvents();
+                VBox PLEASE = new VBox();
+                for (Event e : events) {
+                        HBox per1 = new HBox();
+                        per1.setStyle("-fx-background-color:#2A363F;");
+                        VBox details = new VBox();
+                        Label name = new Label("Event name : ");
+                        name.setStyle(textHeader);
+                        Label Cate = new Label("Category : ");
+                        Cate.setStyle(textNormal);
+                        Label MadeBy = new Label("Made by : ");
+                        MadeBy.setStyle(textNormal);
+                        Label price = new Label("Price : ");
+                        price.setStyle(textNormal);
+                        details.getChildren().addAll(name,Cate,MadeBy,price);
+
+                        per1.widthProperty().addListener((obs,oldPad,newPad)->{
+                                double labelMar = per1.getWidth()*0.0211;
+                                VBox.setMargin(LogOutBut, new Insets(labelMar,0,0,labelMar));
+                        });
+
+                        HBox magicBut = new HBox();
+                        magicBut.prefWidthProperty().bind(per1.widthProperty().multiply(0.61));
+                        magicBut.setAlignment(Pos.BOTTOM_RIGHT);
+                        per1.widthProperty().addListener((obs,oldPad,newPad)->{
+                                double butMar = per1.getWidth()*0.0317;
+                                VBox.setMargin(LogOutBut, new Insets(0,butMar,butMar,0));
+                        });
+                        JFXButton buy= new JFXButton("Buy");
+                        buy.setStyle(ButStyleUA);
+                        magicBut.getChildren().add(buy);
+                        per1.getChildren().addAll(details,magicBut);
+                        PLEASE.getChildren().addAll(per1);
+
+                        buy.setOnAction(x -> {
+                                buy.setDisable(true);
+                                a.buy(e);});
+                }
+                scroller.setContent(PLEASE);
+                BorPane.setCenter(scroller);
 
                 root = new Scene(BorPane,600,400);
 

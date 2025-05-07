@@ -88,6 +88,8 @@ public class AttendeeHscreen{
         GridPane.setVgrow(but1, Priority.ALWAYS);
         but1.setMaxWidth(Double.MAX_VALUE);
 
+        but1.setOnAction(e -> sceneManager.switchToAttendeeInfo(a));
+
 
         JFXButton but2 = new JFXButton("Buy Tickets");
         but2.setStyle(ButStyleUA);
@@ -95,12 +97,16 @@ public class AttendeeHscreen{
         GridPane.setVgrow(but2, Priority.ALWAYS);
         but2.setMaxWidth(Double.MAX_VALUE);
 
+        but2.setOnAction(e -> sceneManager.switchToBuyTickets(a));
+
 
         JFXButton but3 = new JFXButton("Logout");
         but3.setStyle(ButStyleUA);
         GridPane.setHgrow(but3, Priority.ALWAYS);
         GridPane.setVgrow(but3, Priority.ALWAYS);
         but3.setMaxWidth(Double.MAX_VALUE);
+
+        but3.setOnAction(e -> sceneManager.switchToLogout(a));
 
 
         Buttons.add(but1, 0 ,0);

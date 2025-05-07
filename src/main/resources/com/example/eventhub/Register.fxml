@@ -55,29 +55,29 @@
             <VBox prefHeight="400.0" prefWidth="150.0" HBox.hgrow="SOMETIMES">
                <children>
                   <StackPane prefHeight="48.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
-                  <TextField focusTraversable="false" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                  <TextField fx:id="username" focusTraversable="false" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
                   <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
-                  <TextField focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                  <TextField fx:id="password" focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
                   <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
-                  <DatePicker maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="150.0" stylesheets="@Login.css" VBox.vgrow="ALWAYS" />
+                  <DatePicker fx:id="DOB" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="150.0" stylesheets="@Login.css" VBox.vgrow="ALWAYS" />
                   <StackPane prefHeight="25.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
-                  <TextField focusTraversable="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                  <TextField fx:id="balance" focusTraversable="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="17.0" />
                      </font>
                   </TextField>
                   <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
-                  <JFXRadioButton text="Male" textFill="WHITE" VBox.vgrow="ALWAYS" />
+                  <JFXRadioButton fx:id="malebutton" text="Male" textFill="WHITE" VBox.vgrow="ALWAYS" />
                   <StackPane prefHeight="13.0" prefWidth="150.0" VBox.vgrow="SOMETIMES" />
-                  <JFXRadioButton text="Female" textFill="WHITE" VBox.vgrow="ALWAYS" />
+                  <JFXRadioButton fx:id="femalebutton" text="Female" textFill="WHITE" VBox.vgrow="ALWAYS" />
                   <StackPane prefHeight="55.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
                </children>
             </VBox>
@@ -130,25 +130,25 @@
                   <VBox prefHeight="400.0" prefWidth="150.0" HBox.hgrow="SOMETIMES">
                      <children>
                         <StackPane prefHeight="43.0" prefWidth="144.0" VBox.vgrow="ALWAYS" />
-                        <TextField focusTraversable="false" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                        <TextField fx:id="address" focusTraversable="false" maxWidth="1.7976931348623157E308" nodeOrientation="LEFT_TO_RIGHT" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                         <StackPane prefHeight="25.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
-                        <TextField focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                        <TextField fx:id="trait1" focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                         <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
-                        <TextField focusTraversable="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
+                        <TextField fx:id="trait2" focusTraversable="false" prefHeight="25.0" prefWidth="150.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
                            <font>
                               <Font size="17.0" />
                            </font>
                         </TextField>
                         <StackPane prefHeight="25.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />
-                        <TextField focusTraversable="false" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css">
+                        <TextField fx:id="trait3" focusTraversable="false" prefHeight="25.0" prefWidth="144.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css">
                            <font>
                               <Font size="17.0" />
                            </font>
@@ -163,7 +163,7 @@
                   <StackPane prefHeight="20.0" prefWidth="300.0" VBox.vgrow="ALWAYS" />
                   <StackPane prefHeight="60.0" prefWidth="300.0" VBox.vgrow="ALWAYS">
                      <children>
-                        <JFXButton fx:id="login_button" minHeight="-Infinity" minWidth="-Infinity" prefHeight="41.0" prefWidth="257.0" style="-fx-background-color: #6ED9A0;" text="Register" textAlignment="CENTER" textFill="#fbfcfc">
+                        <JFXButton fx:id="Register_Button" buttonType="RAISED" minHeight="-Infinity" minWidth="-Infinity" onAction="#RegisterButton" prefHeight="41.0" prefWidth="257.0" style="-fx-background-color: #6ED9A0;" text="Register" textAlignment="CENTER" textFill="#fbfcfc">
                            <font>
                               <Font size="20.0" />
                            </font>

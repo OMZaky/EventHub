@@ -1,5 +1,7 @@
 package com.example.eventhub;
 
+import javafx.fxml.FXML;
+
 import static javafx.application.Platform.exit;
 
 public class LogoutController implements SceneController{
@@ -7,10 +9,12 @@ public class LogoutController implements SceneController{
     private SceneManager sceneManager;
     private Person person;
 
+    @FXML
     private void LogoutButton(){
         sceneManager.switchToLogin();
     }
 
+    @FXML
     private void GoBackButton(){
 
         switch (person) {

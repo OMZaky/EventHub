@@ -2,6 +2,7 @@ package com.example.eventhub;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Objects;
 
 
 public class Event implements Cloneable{
@@ -92,6 +93,29 @@ public class Event implements Cloneable{
         return madeBy;
     }
     
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if(!(other instanceof Event)){
+            return false;
+        }
+        else{
+        Event otherE = (Event)other;
+        if(otherE.name.equals(this.name) ){
+            return otherE.madeBy.toString().equals(this.madeBy.toString());
+        }
+        return false;
+        }
+    }
+
+
+
+
       @Override
     public String toString() {
         return "Event Name :" + getName() + "\nEvent Category :" + getCategoryname()

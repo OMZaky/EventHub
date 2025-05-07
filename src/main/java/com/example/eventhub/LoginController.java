@@ -2,10 +2,12 @@ package com.example.eventhub;
 
 import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
@@ -38,11 +40,31 @@ public class LoginController implements SceneController{
     private Text welcometext;
     @FXML
     private JFXButton login_button;
+    @FXML
+    private HBox rootPane;
     private Person user = null;
     private SceneManager sceneManager;
 
 
     public void initialize() {
+
+
+        rootPane.setFocusTraversable(true);
+
+        rootPane.sceneProperty().addListener((obs, oldScene, newScene) -> {
+            if (newScene != null) {
+                // Add event filter to handle clicks
+                newScene.addEventFilter(MouseEvent.MOUSE_CLICKED, event -> {
+                    Node target = (Node) event.getTarget();
+                    Node focusOwner = newScene.getFocusOwner();
+
+                    // Check if focus is on a text input and click is outside
+                    if (focusOwner instanceof TextInputControl && !isClickWithinInput(target)) {
+                        rootPane.requestFocus(); // Remove focus
+                    }
+                });
+            }
+        });
 
         login_button.disableProperty().bind(Username.textProperty().isEmpty().or(Password.textProperty().isEmpty()));
         imageContainer.setMinSize(300, 300);
@@ -59,14 +81,30 @@ public class LoginController implements SceneController{
 
         // Ensure the image preserves its aspect ratio
         logoImage.setPreserveRatio(true);
+        Username.setOnKeyPressed(this::handleEnterKeyPressUser);
+        Password.setOnKeyPressed(this::handleEnterKeyPressPass);
+    }
 
-        Password.setOnKeyPressed(this::handleEnterKeyPress);
+    private boolean isClickWithinInput(Node target) {
+        Node node = target;
+        while (node != null) {
+            if (node == Username || node == Password) {
+                return true;
+            }
+            node = node.getParent();
+        }
+        return false;
     }
 
 
-    private void handleEnterKeyPress(KeyEvent event) {
+    private void handleEnterKeyPressPass(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
             loginbutton();
+        }
+    }
+    private void handleEnterKeyPressUser(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            Password.requestFocus();
         }
     }
 
@@ -83,12 +121,22 @@ public class LoginController implements SceneController{
             //case Organizer w -> sceneManager.switchToOrganizerHscreen(w);
             //case Admin w -> sceneManager.switchToAdminHscreen(w);
             default -> {
+                showError("sq");
                 exit(); // Only exit if absolutely necessary
             }
         }
 
+        Username.setText("");
+        Password.setText("");
+        imageContainer.requestFocus();
 
 
+
+    }
+
+    @FXML
+    public void RegisterButton(){
+        sceneManager.switchToRegister();
     }
 
 

@@ -80,6 +80,9 @@ public class AttendeeInfo{
             VBox.setMargin(BuyBut, new Insets(ButtonMar,0,0,0));
         });
 
+        BuyBut.setOnAction(e -> sceneManager.switchToBuyTickets(a));
+
+
         JFXButton LogOutBut = new JFXButton("Log out");
         LogOutBut.setMaxWidth(Double.MAX_VALUE);
         LogOutBut.setStyle(ButStyleA);
@@ -88,6 +91,9 @@ public class AttendeeInfo{
             double ButtonMar = ButtonsVbox.getHeight()*0.025;
             VBox.setMargin(LogOutBut, new Insets(ButtonMar,0,0,0));
         });
+
+        LogOutBut.setOnAction(e -> sceneManager.switchToLogout(a));
+
 
 
         ButtonsVbox.getChildren().addAll(UserInfoBut,BuyBut,LogOutBut);

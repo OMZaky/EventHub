@@ -3,9 +3,11 @@ package com.example.eventhub;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Attendee extends Person {
-    static Scanner input = new Scanner(System.in);
+import javafx.scene.Scene;
 
+
+
+public class Attendee extends Person {
     private final String address;
     private final Gender gender;
     private final ArrayList<String> interests;
@@ -14,13 +16,14 @@ public class Attendee extends Person {
     boolean buysuccess = false;
 
     public Attendee() {
-        this(null, null, null, null, null, null, 0, 0, 0);
+        this.address = null;
+        this.gender = null;
+        this.interests = null;
+        this.wallet = null;
     }
 
 
-
-
-    Attendee(Wallet wallet, Gender gender, String address, ArrayList<String> interests, String username,String password, int yearOfBirth, int monthOfBirth, int dayOfBirth) {
+    Attendee(Wallet wallet, Gender gender, String address, ArrayList<String> interests, String username, String password, int yearOfBirth, int monthOfBirth, int dayOfBirth) {
         super(username, password, yearOfBirth, monthOfBirth, dayOfBirth);
         this.wallet = wallet;
         this.address = address;
@@ -31,9 +34,11 @@ public class Attendee extends Person {
     public String getAddress() {
         return address;
     }
+
     public Gender getGender() {
         return gender;
     }
+
     public Wallet getWallet() {
         return wallet;
     }
@@ -55,23 +60,21 @@ public class Attendee extends Person {
     }
 
 
-    public void buy(Event event){
-        if (this.wallet.getBalance() >= event.getTicketPrice()){
-            if(event.getAttendeeNum() < event.getRoom().getCapacity()){
+    public void buy(Event event) {
+        if (this.wallet.getBalance() >= event.getTicketPrice()) {
+            if (event.getAttendeeNum() < event.getRoom().getCapacity()) {
                 this.wallet.pay(event);
                 event.setAttendeeNum(event.getAttendeeNum() + 1);
                 System.out.println("Ticket bought successfully");
                 event.getAttendee().add(this);
                 myevents.add(event);
                 buysuccess = true;
-            }
-            else{
+            } else {
                 System.out.println("Event number of attendees is complete.");
                 System.out.println("Choose another event.");
 
             }
-        }
-        else {
+        } else {
             System.out.println("Balance is not sufficient");
         }
     }
@@ -87,12 +90,29 @@ public class Attendee extends Person {
     }
 
 
+    public ArrayList<Event> getBuyableEvents() {
+        ArrayList<Event> allBuyableEvents = new ArrayList<>(1000);
+
+        for (Event e : Database.events) {
+            boolean add = true;
+            for (Event x : this.myevents) {
+                if (e.equals(x)) {
+                    add = false;
+                }
+                allBuyableEvents.add(e);
+            }
+        }
+        return allBuyableEvents;
+    }
+}
+
+
+
+
+
 
 
     /*
-
-    @Override
-
     public void homeScreen() {
 
         while(true){
@@ -157,5 +177,5 @@ public class Attendee extends Person {
 
      */
 
-    }
+
 
