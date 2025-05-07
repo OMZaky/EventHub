@@ -11,28 +11,39 @@ import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
 
-public class LoginController extends Region {
-    public Button button1;
+public class LoginController implements SceneController{
     @FXML
-    private Label welcomeText; 
-    @FXML private StackPane imageContainer; // Parent container
-    @FXML private ImageView logoImage;      // ImageView
-    @FXML private HBox RightHBox;
-    @FXML private Line MyLine;
-    @FXML private StackPane MyPane;
-    @FXML private TextField Username;
-    @FXML private PasswordField Password;
-    @FXML private VBox Username_vbox;
-    @FXML private VBox Password_vbox;
-    @FXML private Text welcometext;
-    @FXML private JFXButton login_button;
-    private String user;
+    private Label welcomeText;
+    @FXML
+    private StackPane imageContainer; // Parent container
+    @FXML
+    private ImageView logoImage;      // ImageView
+    @FXML
+    private HBox RightHBox;
+    @FXML
+    private Line MyLine;
+    @FXML
+    private StackPane MyPane;
+    @FXML
+    private TextField Username;
+    @FXML
+    private PasswordField Password;
+    @FXML
+    private VBox Username_vbox;
+    @FXML
+    private VBox Password_vbox;
+    @FXML
+    private Text welcometext;
+    @FXML
+    private JFXButton login_button;
+    private String user = "null";
+    private SceneManager sceneManager;
 
 
     public void initialize() {
 
         login_button.disableProperty().bind(Username.textProperty().isEmpty().or(Password.textProperty().isEmpty()));
-        imageContainer.setMinSize(300,300);
+        imageContainer.setMinSize(300, 300);
 
         MyLine.startYProperty().bind(MyPane.heightProperty().multiply(0.2));
         MyLine.endYProperty().bind(MyPane.heightProperty().multiply(0.8));
@@ -50,26 +61,26 @@ public class LoginController extends Region {
         Password.setOnKeyPressed(this::handleEnterKeyPress);
     }
 
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     private void handleEnterKeyPress(KeyEvent event) {
         if (event.getCode() == KeyCode.ENTER) {
-            user = Person.LogIn(Username.getText(),Password.getText(), Username_vbox, Password_vbox);
+            loginbutton();
         }
     }
 
 
-
     @FXML
-    protected void loginbutton(){
-        user = Person.LogIn(Username.getText(),Password.getText(), Username_vbox, Password_vbox);
-        System.out.println(user);
-
+    protected void loginbutton() {
+        while (user.equals("null")) {
+            user = Person.LogIn(Username.getText(), Password.getText(), Username_vbox, Password_vbox);
+        }
+        sceneManager.switchToAttendeeDashboard();
 
     }
 
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
 
+
+    }
 }

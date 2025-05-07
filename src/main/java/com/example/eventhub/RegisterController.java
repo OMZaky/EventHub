@@ -13,16 +13,23 @@ import javafx.scene.text.Text;
 
 
 
-public class RegisterController extends Region {
+public class RegisterController implements SceneController {
 
     @FXML private Line MyLine;
     @FXML private StackPane MyPane;
 
+    private SceneManager sceneManager;
 
     public void initialize(){
 
         MyLine.startYProperty().bind(MyPane.heightProperty().multiply(0.1));
         MyLine.endYProperty().bind(MyPane.heightProperty().multiply(0.9));
+
+    }
+
+    public void setSceneManager(SceneManager sceneManager) {
+        this.sceneManager = sceneManager;
+
 
     }
 }

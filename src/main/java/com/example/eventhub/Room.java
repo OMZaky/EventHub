@@ -141,7 +141,7 @@ public Room(int capacity) {
             // Handle cancellation
             if (choiceInt == 0) {
                 System.out.println("Reservation cancelled.");
-                new Organizer().homeScreen();
+                //new Organizer().homeScreen();
             }
 
             // Validate if the choice number is within the range of displayed options
