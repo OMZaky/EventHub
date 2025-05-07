@@ -17,6 +17,8 @@ public class SceneManager {
     private Buy_Tickets buyTickets;
     private Scene logoutScene;
 
+
+    // put here for method access
     FXMLLoader logoutLoader = new FXMLLoader(getClass().getResource("Logout.fxml"));
     Parent logoutRoot = logoutLoader.load();
     LogoutController logoutController = logoutLoader.getController();
