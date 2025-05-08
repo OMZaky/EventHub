@@ -50,8 +50,6 @@ public class SceneManager {
         logoutController.setSceneManager(this);
         logoutScene = new Scene(logoutRoot, 320, 240);
 
-        // Initialize other scenes
-        attendeeDashboard = new Attendee_Dashboard(this);
     }
 
     public void switchToAttendeeHscreen(Attendee a) {
@@ -69,9 +67,6 @@ public class SceneManager {
         primaryStage.setScene(buyTickets.getScene());
     }
 
-    public void switchToAttendeeDashboard() {
-        primaryStage.setScene(attendeeDashboard.getScene());
-    }
 
     public void switchToRegister() {
         primaryStage.setScene(registerScene);

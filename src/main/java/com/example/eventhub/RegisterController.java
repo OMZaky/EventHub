@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +42,26 @@ public class RegisterController implements SceneController {
     private SceneManager sceneManager;
 
     public void initialize(){
+
+        DOB.setDayCellFactory(picker -> new DateCell() {
+            @Override
+            public void updateItem(LocalDate date, boolean empty) {
+                super.updateItem(date, empty);
+                LocalDate today = LocalDate.now();
+
+                setDisable(date.isAfter(today));
+
+                if (date.isAfter(today)) {
+                    setStyle("-fx-background-color: #ffc0cb;"); // Light red
+                }
+            }
+        });
+
+        DOB.valueProperty().addListener((obs, oldValue, newValue) -> {
+            if (newValue != null && newValue.isAfter(LocalDate.now())) {
+                DOB.setValue(oldValue);
+            }
+        });
 
         boolean valid = Person.ValidateUsername(username.getText(), usernamevbox);
 
