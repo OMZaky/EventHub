@@ -3,7 +3,10 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXRadioButton?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
@@ -18,7 +21,14 @@
             <HBox prefHeight="400.0" prefWidth="10.0" />
             <VBox prefHeight="400.0" prefWidth="100.0" HBox.hgrow="NEVER">
                <children>
-                  <StackPane prefHeight="56.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                  <StackPane alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <ImageView fitHeight="35.0" fitWidth="39.0" onMouseClicked="#BackButton" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                           <image>
+                              <Image url="@Back%20Arrow%20Button.png" />
+                           </image>
+                        </ImageView>
+                     </children></StackPane>
                   <Text fill="#fcfcfb" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="100.0" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="16.0" />
@@ -65,15 +75,7 @@
                      </children>
                   </VBox>
                   <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
-                  <VBox fx:id="passwordbox" prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS">
-                     <children>
-                        <TextField fx:id="password" focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS">
-                           <font>
-                              <Font size="17.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                  </VBox>
+                  <PasswordField fx:id="password" focusTraversable="false" prefHeight="25.0" prefWidth="190.0" style="-fx-background-color: #2A363F; -fx-border-color: #465058;" stylesheets="@Login.css" VBox.vgrow="ALWAYS" />
                   <StackPane prefHeight="25.0" prefWidth="190.0" VBox.vgrow="ALWAYS" />
                   <DatePicker fx:id="DOB" maxWidth="1.7976931348623157E308" prefHeight="12.0" prefWidth="150.0" stylesheets="@Login.css" VBox.vgrow="ALWAYS" />
                   <StackPane prefHeight="25.0" prefWidth="150.0" VBox.vgrow="ALWAYS" />

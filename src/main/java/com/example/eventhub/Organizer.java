@@ -169,14 +169,7 @@ public class Organizer extends Person implements Employee<Event> {
         }
     }
     
-    @Override
-    public String toString() {
-        return "Organizer{" +
-                "Name='" + getUsername() + '\'' +
-                ", password='" + getPassword() + '\'' +
-                ",balance ='" + wallet.getBalance() + '\'' +
-                '}';
-    }
+
     /*
     public void show(){
         ArrayList<String> attendees = new ArrayList<>(1000); //represents his attnedees

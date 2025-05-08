@@ -118,31 +118,20 @@ public abstract class Person {
 
     }
 
-    public static boolean ValidateRegister(String username,  String balance , VBox pwUsername, VBox pwBalance){
-        
-        boolean valid = true;
-        if(!Person.Checkusername(username))
-        {
-           pwUsername.getChildren().add(new Label("Username is already taken"));
-           valid = false;
-        }
-        
-        String genderstring;
-        int day,month,year;
-        Gender usableGender;
+    public static boolean ValidateUsername(String username, VBox pwUsername){
 
+        pwUsername.getChildren().removeIf(node -> node instanceof Text);
 
-        boolean validInput = false;
-
-        if(balance.matches("\\d+") && (Integer.valueOf(balance)>0) ){ 
-         validInput = true;
-        }
-        else{
-        pwBalance.getChildren().add(new Label("please enter a positive balance value"));
-        valid = false;
-        }
-        return valid;
+        if (!Person.CheckUsername(username)) {
+            Text text = new Text("Username Not Found");
+            text.setFill(Color.RED);
+            text.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
+            pwUsername.getChildren().add(text);
+            return false;
+        }else return true;
     }
+
+
     /*
     protected static void PasswordCheck(Person p, String password, Text text){
         if(p == null) System.out.println("null");
@@ -161,7 +150,7 @@ public abstract class Person {
 protected static void PasswordCheck(Person p, String password, VBox pwPassword){
     if (password.equals(p.password)){
         p.loggedIn = true;
-    } else{
+    } else {
         Text text = new Text("Password Is Incorrect");
         text.setFill(Color.RED);
         text.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
@@ -170,7 +159,7 @@ protected static void PasswordCheck(Person p, String password, VBox pwPassword){
 }
 
 
-    public static boolean Checkusername(String username){
+    public static boolean CheckUsername(String username){
 
         while (true)
         {
@@ -202,8 +191,6 @@ protected static void PasswordCheck(Person p, String password, VBox pwPassword){
     protected void setPassword(String password){
         this.password = password;
     }   
-    @Override   
-    public abstract String toString();
 
 
     

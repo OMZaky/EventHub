@@ -121,7 +121,7 @@ public class LoginController implements SceneController{
             //case Organizer w -> sceneManager.switchToOrganizerHscreen(w);
             //case Admin w -> sceneManager.switchToAdminHscreen(w);
             default -> {
-                showError("sq");
+                showError("Error");
                 exit(); // Only exit if absolutely necessary
             }
         }

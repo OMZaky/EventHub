@@ -111,14 +111,8 @@ public class Admin extends Person implements Employee<Categories> {
         System.out.printf("%-20s %-20s %-20s %n","Room No."+room,event,attendee );
         }
     }
-    
-    @Override
-    public String toString(){
-    String adminInfo= "Username: " + this.getUsername()+ "\n"+ "role: " + this.role + "\n" + "Working hours: " + 
-            (workEnd.get(Calendar.HOUR_OF_DAY)-workBegin.get(Calendar.HOUR_OF_DAY));  
-        
-    return adminInfo;
-    }
+
+
     /*
     public void homeScreen(){
     ArrayList<String> attendees = new ArrayList<>();
