@@ -38,7 +38,7 @@ public class Main extends Application {
 
          Attendee attendee1 = new Attendee(new Wallet(25000), Gender.MALE, "Nasr City", new ArrayList<>(List.of("Birthdays", "Football", "Tv Shows")), "Mohamed", "MyPassword", 1, 1, 2000);
          Attendee attendee2 = new Attendee(new Wallet(20000), Gender.FEMALE, "Tagamo3", new ArrayList<>(List.of("Wedding", "Movies", "Skating")), "Mariam", "MyPassword", 2, 2, 2000);
-         Attendee attendee3 = new Attendee(new Wallet(15000), Gender.MALE, "Rehab", new ArrayList<>(List.of("Parties", "Snorkling", "Bachelor Party")), "Omar", "MyPassword", 5, 5, 2000);
+         Attendee attendee3 = new Attendee(new Wallet(15000), Gender.MALE, "Rehab", new ArrayList<>(List.of("Parties", "Snorkling", "Bachelor Party")), "Omar", "123", 5, 5, 2000);
 
          Room room1 = new Room(100);
          Room room2 = new Room(60);
@@ -65,6 +65,7 @@ public class Main extends Application {
          Database.events.addAll(Arrays.asList(event1, event2, event3));
          Database.rooms.addAll(Arrays.asList(room1, room2, room3));
          Database.categories.addAll(Arrays.asList(Wedding, Birthday, Conference));
+
 
 
 

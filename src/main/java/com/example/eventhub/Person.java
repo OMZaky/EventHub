@@ -25,7 +25,7 @@ public abstract class Person {
     }
     
     Person(String username,String password, int yearOfBirth, int monthOfBirth, int dayOfBirth){
-        //checkusername
+
         this.username = username;
         this.loggedIn = false;
         this.password = password;
@@ -118,9 +118,7 @@ public abstract class Person {
 
     }
 
-    public Person register(String username, String password, RadioButton gender,
-                           String address, LocalDate time, String interest1, String interest2,
-                           String interest3, String balance, VBox pwGender , VBox pwUsername, VBox pwBalance){
+    public static boolean ValidateRegister(String username,  String balance , VBox pwUsername, VBox pwBalance){
         
         boolean valid = true;
         if(!Person.Checkusername(username))
@@ -132,30 +130,6 @@ public abstract class Person {
         String genderstring;
         int day,month,year;
         Gender usableGender;
-        while(true){
-            genderstring = gender.getText().toLowerCase();
-            switch(genderstring){
-                case "male" -> {
-                    usableGender = Gender.MALE;
-                    break;
-                }
-                case "female" -> {
-                    usableGender = Gender.FEMALE;
-                    break;
-                }
-                default ->{
-                    pwGender.getChildren().add(new Label("please choose a gender"));
-                    valid = false;
-                    continue;
-                }
-            }
-            break;
-        }
-
-
-        day = time.getDayOfMonth();
-        month = time.getMonthValue();
-        year = time.getYear();
 
 
         boolean validInput = false;
@@ -167,20 +141,7 @@ public abstract class Person {
         pwBalance.getChildren().add(new Label("please enter a positive balance value"));
         valid = false;
         }
-
-        if (valid){
-        
-        Wallet wallet = new Wallet(Integer.valueOf(balance));
-        
-        ArrayList<String> interests = new ArrayList<>(3);
-        interests.add(interest1);
-        interests.add(interest2);
-        interests.add(interest3);
-        Person newGuy = new Attendee(wallet, usableGender, address, interests ,username, password, day, month, year );
-        Database.people.add(newGuy);
-        return newGuy;
-        }
-        return null;
+        return valid;
     }
     /*
     protected static void PasswordCheck(Person p, String password, Text text){
@@ -228,7 +189,7 @@ protected static void PasswordCheck(Person p, String password, VBox pwPassword){
             {
                 break; // username is available!
             }
-            
+
             return false;
         }
         return true;

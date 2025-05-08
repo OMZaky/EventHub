@@ -99,6 +99,8 @@ public class Attendee extends Person {
                 if (e.equals(x)) {
                     add = false;
                 }
+            }
+            if(add) {
                 allBuyableEvents.add(e);
             }
         }

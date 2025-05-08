@@ -93,7 +93,6 @@ public class Buy_Tickets{
                 LogOutBut.setOnAction(e -> sceneManager.switchToLogout(a));
 
 
-
                 ButtonsVbox.getChildren().addAll(UserInfoBut,BuyBut,LogOutBut);
 
                 Line l = new Line();
@@ -114,32 +113,28 @@ public class Buy_Tickets{
                 scroller.setStyle("-fx-background: #2A363F; -fx-background-color: #2A363F;");
                 ArrayList<Event> events = a.getBuyableEvents();
                 VBox PLEASE = new VBox();
+                PLEASE.prefWidthProperty().bind(scroller.widthProperty().multiply(0.95));
                 for (Event e : events) {
                         HBox per1 = new HBox();
+                        per1.prefWidthProperty().bind(PLEASE.widthProperty().multiply(1));
                         per1.setStyle("-fx-background-color:#2A363F;");
                         VBox details = new VBox();
-                        Label name = new Label("Event name : ");
+                        details.prefWidthProperty().bind(per1.widthProperty().multiply(0.7));
+                        Label name = new Label("Event name : " + e.getName());
                         name.setStyle(textHeader);
-                        Label Cate = new Label("Category : ");
+                        Label Cate = new Label("Category : " + e.getCategoryname());
                         Cate.setStyle(textNormal);
-                        Label MadeBy = new Label("Made by : ");
+                        Label MadeBy = new Label("Made by : " + e.getMadeBy().getUsername());
                         MadeBy.setStyle(textNormal);
-                        Label price = new Label("Price : ");
+                        Label price = new Label("Price : " + e.getTicketPrice());
                         price.setStyle(textNormal);
                         details.getChildren().addAll(name,Cate,MadeBy,price);
 
-                        per1.widthProperty().addListener((obs,oldPad,newPad)->{
-                                double labelMar = per1.getWidth()*0.0211;
-                                VBox.setMargin(LogOutBut, new Insets(labelMar,0,0,labelMar));
-                        });
 
                         HBox magicBut = new HBox();
-                        magicBut.prefWidthProperty().bind(per1.widthProperty().multiply(0.61));
+                        magicBut.prefWidthProperty().bind(per1.widthProperty().multiply(0.25));
                         magicBut.setAlignment(Pos.BOTTOM_RIGHT);
-                        per1.widthProperty().addListener((obs,oldPad,newPad)->{
-                                double butMar = per1.getWidth()*0.0317;
-                                VBox.setMargin(LogOutBut, new Insets(0,butMar,butMar,0));
-                        });
+
                         JFXButton buy= new JFXButton("Buy");
                         buy.setStyle(ButStyleUA);
                         magicBut.getChildren().add(buy);

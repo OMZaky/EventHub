@@ -55,7 +55,16 @@ public class RegisterController implements SceneController {
     public void RegisterButton(){
 
         selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();
-
+//        boolean valid = Person.ValidateRegister(
+//                username.getText(),
+//                password.getText(),
+//
+//
+//
+//
+//
+//
+//                );
         Attendee attendee = new Attendee(
                 new Wallet(Integer.parseInt(balance.getText())),
                 switch (selectedRadioButton.getText()){
