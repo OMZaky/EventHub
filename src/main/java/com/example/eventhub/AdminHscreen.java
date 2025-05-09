@@ -8,7 +8,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -109,7 +108,7 @@ public class AdminHscreen{
         Buttons.add(but1, 0, 0);
         Buttons.add(but2, 1, 0);
         Buttons.add(but3, 2, 0);
-        Buttons.add(but4, 1, 1);
+        Buttons.add(but4, 3,0);
         ScrollPane scroller = new ScrollPane();
         scroller.setFitToWidth(true);
         scroller.setFitToHeight(true);
@@ -121,11 +120,21 @@ public class AdminHscreen{
         VBox adminscroll = new VBox();
         stack.getChildren().add(adminscroll);
 
+        adminscroll.setPadding(new Insets(0, 0, 0, 50)); // Left padding of 50 pixels
         GridPane GraphStart = new GridPane();
         GraphStart.setVgap(30);
         GraphStart.setHgap(30);
+        ColumnConstraints col1 = new ColumnConstraints();
+        col1.setPercentWidth(25);
+        ColumnConstraints col2 = new ColumnConstraints();
+        col2.setPercentWidth(25);
+        ColumnConstraints col3 = new ColumnConstraints();
+        col3.setPercentWidth(25);
+        ColumnConstraints col4 = new ColumnConstraints();
+        col4.setPercentWidth(25);
+        GraphStart.getColumnConstraints().addAll(col1, col2, col3, col4);
 
-        GraphStart.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3);
+
 
         Label Attendeename = new Label("Attendee");
         Attendeename.setStyle(textTable);
@@ -134,13 +143,14 @@ public class AdminHscreen{
         Label EventName = new Label("Event name");
         EventName.setStyle(textTable);
         Label EventDate = new Label("Event date");
+        EventDate.setStyle(textTable);
 
 
 
-        GraphStart.add(Attendeename, 0, 0);
-        GraphStart.add(Orgname, 1, 0);
-        GraphStart.add(EventName, 2, 0);
-        GraphStart.add(EventDate, 3, 0);
+        GraphStart.add(Attendeename, 0, 1);
+        GraphStart.add(Orgname, 1, 1);
+        GraphStart.add(EventName, 2, 1);
+        GraphStart.add(EventDate, 3, 1);
 
         adminscroll.getChildren().addAll(GraphStart);
 
@@ -157,32 +167,46 @@ public class AdminHscreen{
         }
 
 
-        int max1 = Math.max(organizers.size(), Database.events.size());
-        int max = Math.max(attendees.size(), max1);
+        int max = Math.min(attendees.size(), Math.min(organizers.size(), Database.events.size()));
 
         for (int i = 0; i < max; i++) {
             String attendee = (i < attendees.size() ? attendees.get(i) : "");
             String organizer = (i < organizers.size() ? organizers.get(i) : "");
             String event = (i < Database.events.size() ? Database.events.get(i).getName() : "");
-            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-            String  formattedDate = Database.events.get(i).getFormattedDate();
+            String formattedDate = (i < Database.events.size() ? Database.events.get(i).getFormattedDate() : "");
+
             GridPane Graphcont = new GridPane();
             GraphStart.setVgap(30);
             GraphStart.setHgap(30);
             Graphcont.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3,colgrid4);
-            Label TableLab1 = new Label(attendee);
-            TableLab1.setStyle(textTable);
-            Label TableLab2 = new Label(organizer);
-            TableLab1.setStyle(textTable);
-            Label TableLab3 = new Label(event);
-            TableLab1.setStyle(textTable);
-            Label TableLab4 = new Label(formattedDate);
-            TableLab1.setStyle(textTable);
+            HBox row = new HBox();
+            row.setSpacing(30);
+            row.setPadding(new Insets(5, 0, 5, 0));
 
-            Graphcont.add(TableLab1, 0, 0);
-            Graphcont.add(TableLab2, 1, 0);
-            Graphcont.add(TableLab3, 2, 0);
-            Graphcont.add(TableLab4, 3, 0);
+            Label attendeeLabel = new Label(attendee);
+            attendeeLabel.setStyle(textTable);
+            attendeeLabel.setMaxWidth(Double.MAX_VALUE);
+
+
+            Label organizerLabel = new Label(organizer);
+            organizerLabel.setStyle(textTable + " -fx-padding: 0 0 0 9;");
+            organizerLabel.setMaxWidth(Double.MAX_VALUE);
+
+
+            Label eventLabel = new Label(event);
+            eventLabel.setStyle(textTable + " -fx-padding: 0 0 0 10;");
+            eventLabel.setMaxWidth(Double.MAX_VALUE);
+
+
+            Label dateLabel = new Label(formattedDate);
+            dateLabel.setStyle(textTable + " -fx-padding: 0 0 0 23;");
+            dateLabel.setMaxWidth(Double.MAX_VALUE);
+
+
+            Graphcont.add(attendeeLabel, 0, 0);
+            Graphcont.add(organizerLabel, 1, 0);
+            Graphcont.add(eventLabel, 2, 0);
+            Graphcont.add(dateLabel, 3, 0);
             adminscroll.getChildren().addAll(Graphcont);
         }
 
@@ -193,7 +217,7 @@ public class AdminHscreen{
         scroller.setContent(stack);
 
 
-        HomePageAT.getChildren().addAll(name, theLines, Buttons);
+        HomePageAT.getChildren().addAll(name, theLines, Buttons, scroller);
         root = new Scene(HomePageAT, 600, 400);
     }
 
