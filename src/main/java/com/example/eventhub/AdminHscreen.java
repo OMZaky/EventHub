@@ -9,8 +9,9 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
-import javax.swing.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AdminHscreen {
     private Admin admin;
@@ -68,12 +69,14 @@ public class AdminHscreen {
         });
 
         ColumnConstraints colgrid1 = new ColumnConstraints();
-        colgrid1.setPercentWidth(33);
+        colgrid1.setPercentWidth(25);
         ColumnConstraints colgrid2 = new ColumnConstraints();
-        colgrid2.setPercentWidth(33);
+        colgrid2.setPercentWidth(25);
         ColumnConstraints colgrid3 = new ColumnConstraints();
-        colgrid3.setPercentWidth(34);
-        Buttons.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3);
+        colgrid3.setPercentWidth(25);
+        ColumnConstraints colgrid4 = new ColumnConstraints();
+        colgrid3.setPercentWidth(25);
+        Buttons.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3, colgrid4);
 
         JFXButton but1 = new JFXButton("Admin Info");
         but1.setStyle(ButStyleUA);
@@ -132,6 +135,8 @@ public class AdminHscreen {
         EventName.setStyle(textTable);
         Label EventDate = new Label("Event date");
 
+
+
         GraphStart.add(Attendeename, 0, 0);
         GraphStart.add(Orgname, 1, 0);
         GraphStart.add(EventName, 2, 0);
@@ -159,17 +164,19 @@ public class AdminHscreen {
             String attendee = (i < attendees.size() ? attendees.get(i) : "");
             String organizer = (i < organizers.size() ? organizers.get(i) : "");
             String event = (i < Database.events.size() ? Database.events.get(i).getName() : "");
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+            String  formattedDate = Database.events.get(i).getFormattedDate();
             GridPane Graphcont = new GridPane();
             GraphStart.setVgap(30);
             GraphStart.setHgap(30);
-            Graphcont.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3);
+            Graphcont.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3,colgrid4);
             Label TableLab1 = new Label(attendee);
             TableLab1.setStyle(textTable);
             Label TableLab2 = new Label(organizer);
             TableLab1.setStyle(textTable);
             Label TableLab3 = new Label(event);
             TableLab1.setStyle(textTable);
-            Label TableLab4 = new Label();
+            Label TableLab4 = new Label(formattedDate);
             TableLab1.setStyle(textTable);
 
             Graphcont.add(TableLab1, 0, 0);

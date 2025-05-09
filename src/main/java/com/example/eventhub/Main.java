@@ -52,7 +52,7 @@ public class Main extends Application {
          Organizer organizer2 = new Organizer("Farah", "MyPassword", 4, 4, 2000, 40000);
          Organizer organizer3 = new Organizer("Sarah", "MyPassword", 6, 6, 2000, 30000);
 
-         Admin admin = new Admin("Noah", "MyPassword", "Developer", 1990, 5, 5, 8, 18);
+         Admin admin = new Admin("Noah", "123", "Developer", 1990, 5, 5, 8, 18);
 
 
          Event event1 = new Event("Ali's Wedding", Wedding, 1000, calendar1, room1, organizer1, "Morning");

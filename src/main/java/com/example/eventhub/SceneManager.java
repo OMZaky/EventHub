@@ -16,6 +16,8 @@ public class SceneManager {
     private AttendeeInfo attendeeInfo;
     private Buy_Tickets buyTickets;
     private Scene logoutScene;
+    private AdminHscreen adminHscreen;
+
 
 
     // put here for method access (Zaky)
@@ -50,6 +52,11 @@ public class SceneManager {
         logoutController.setSceneManager(this);
         logoutScene = new Scene(logoutRoot, 320, 240);
 
+    }
+
+    public void switchToAdminHscreen(Admin admin){
+    adminHscreen = new AdminHscreen(admin, this);
+    primaryStage.setScene(adminHscreen.getScene());
     }
 
     public void switchToAttendeeHscreen(Attendee a) {

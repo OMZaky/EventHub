@@ -34,7 +34,7 @@ public class Event implements Cloneable{
         Reservations res = new Reservations();
         res.reserve(room, eventTime, DnN,this);
     }
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH);
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
     private String  formattedDate = dateFormat.format(eventTime.getTime());
 
     public Organizer getMadeBy() {
