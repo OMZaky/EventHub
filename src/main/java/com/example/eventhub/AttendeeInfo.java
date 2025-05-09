@@ -215,7 +215,7 @@ public class AttendeeInfo{
         Ename.setStyle(textTable);
         Label Orgname = new Label("Organizer");
         Orgname.setStyle(textTable);
-        Label RoomNo = new Label("Room no.");
+        Label RoomNo = new Label("Room / Date");
         RoomNo.setStyle(textTable);
 
         GraphStart.add(Ename, 0 ,0);
@@ -231,9 +231,9 @@ public class AttendeeInfo{
             Graphcont.getColumnConstraints().addAll(colgrid1, colgrid2 ,colgrid3);
             Label TableLab1 = new Label(e.getName());
             TableLab1.setStyle(textTable);
-            Label TableLab2 = new Label(e.getMadeBy().getUsername());
+            Label TableLab2 = new Label("      " + e.getMadeBy().getUsername());
             TableLab1.setStyle(textTable);
-            Label TableLab3 = new Label(String.valueOf(e.getRoom().getRoomNo()));
+            Label TableLab3 = new Label(String.valueOf("Room: " + e.getRoom().getRoomNo() +" /  Date: " + e.getFormattedDate()));
             TableLab1.setStyle(textTable);
             Graphcont.add(TableLab1, 0 ,0);
             Graphcont.add(TableLab2, 1 ,0);

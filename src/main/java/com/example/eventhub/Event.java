@@ -1,7 +1,10 @@
 package com.example.eventhub;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 import java.util.Objects;
 
 
@@ -19,9 +22,7 @@ public class Event implements Cloneable{
 
 
 
-    Event(){
-
-    }
+    Event(){}
 
     Event(String name , Categories category , int ticketPrice , Calendar eventTime ,Room room,Organizer madeBy , String DnN) {
         this.name = name;
@@ -33,9 +34,15 @@ public class Event implements Cloneable{
         Reservations res = new Reservations();
         res.reserve(room, eventTime, DnN,this);
     }
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/mm/yyyy", Locale.ENGLISH);
+    private String  formattedDate = dateFormat.format(eventTime.getTime());
 
     public Organizer getMadeBy() {
         return madeBy;
+    }
+
+    public String getFormattedDate() {
+        return formattedDate;
     }
 
     public void setMadeBy(Organizer madeBy) {
