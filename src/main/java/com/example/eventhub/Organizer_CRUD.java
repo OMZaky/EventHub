@@ -85,7 +85,7 @@ public class Organizer_CRUD {
         GridPane.setVgrow(but4, Priority.ALWAYS);
         but4.setMaxWidth(Double.MAX_VALUE);
 
-        but4.setOnAction(e -> sceneManager.switchToOrganizerSearch(organizer));
+       // but4.setOnAction(e -> sceneManager.switchToOrganizerSearch(organizer));
 
 
         JFXButton LogOutBut = new JFXButton("Log out");
