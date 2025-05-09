@@ -13,7 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class AdminHscreen {
+public class AdminHscreen{
     private Admin admin;
     private Scene root;
 
