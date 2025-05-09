@@ -73,14 +73,18 @@ public class AttendeeHscreen{
         });
 
         ColumnConstraints colgrid1 = new ColumnConstraints();
-        colgrid1.setPercentWidth(33);
+        colgrid1.setPercentWidth(25);
 
         ColumnConstraints colgrid2 = new ColumnConstraints();
-        colgrid2.setPercentWidth(33);
+        colgrid2.setPercentWidth(25);
 
         ColumnConstraints colgrid3 = new ColumnConstraints();
-        colgrid3.setPercentWidth(34);
-        Buttons.getColumnConstraints().addAll(colgrid1, colgrid2 ,colgrid3);
+        colgrid3.setPercentWidth(25);
+
+        ColumnConstraints colgrid4 = new ColumnConstraints();
+        colgrid3.setPercentWidth(25);
+
+        Buttons.getColumnConstraints().addAll(colgrid1, colgrid2 ,colgrid3, colgrid4);
 
         JFXButton but1 = new JFXButton("User Info");
         but1.setStyle(ButStyleUA);
@@ -99,6 +103,14 @@ public class AttendeeHscreen{
 
         but2.setOnAction(e -> sceneManager.switchToBuyTickets(a));
 
+        JFXButton but4 = new JFXButton("Search");
+        but4.setStyle(ButStyleUA);
+        GridPane.setHgrow(but4, Priority.ALWAYS);
+        GridPane.setVgrow(but4, Priority.ALWAYS);
+        but4.setMaxWidth(Double.MAX_VALUE);
+
+        but4.setOnAction(e -> sceneManager.switchToAttendeeSearch(a));
+
 
         JFXButton but3 = new JFXButton("Logout");
         but3.setStyle(ButStyleUA);
@@ -111,7 +123,8 @@ public class AttendeeHscreen{
 
         Buttons.add(but1, 0 ,0);
         Buttons.add(but2, 1 ,0);
-        Buttons.add(but3, 2 ,0);
+        Buttons.add(but4, 2 ,0);
+        Buttons.add(but3, 3 ,0);
 
 
         HomePageAT.getChildren().addAll(name,theLines,Buttons);

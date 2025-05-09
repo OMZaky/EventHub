@@ -83,6 +83,16 @@ public class AttendeeInfo{
         BuyBut.setOnAction(e -> sceneManager.switchToBuyTickets(a));
 
 
+        JFXButton but4 = new JFXButton("Search");
+        but4.setStyle(ButStyleA);
+        GridPane.setHgrow(but4, Priority.ALWAYS);
+        GridPane.setVgrow(but4, Priority.ALWAYS);
+        but4.setMaxWidth(Double.MAX_VALUE);
+
+        but4.setOnAction(e -> sceneManager.switchToAttendeeSearch(a));
+
+
+
         JFXButton LogOutBut = new JFXButton("Log out");
         LogOutBut.setMaxWidth(Double.MAX_VALUE);
         LogOutBut.setStyle(ButStyleA);
@@ -96,7 +106,7 @@ public class AttendeeInfo{
 
 
 
-        ButtonsVbox.getChildren().addAll(UserInfoBut,BuyBut,LogOutBut);
+        ButtonsVbox.getChildren().addAll(UserInfoBut,BuyBut,but4, LogOutBut);
 
         Line l = new Line();
         l.setStroke(Color.web("#465058"));

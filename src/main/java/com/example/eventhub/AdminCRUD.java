@@ -40,7 +40,7 @@ public class AdminCRUD {
     }
 
     public AdminCRUD(Admin a, SceneManager sceneManager) {
-    
+
         String styleBg = "-fx-background-color: #2A363F;";
         String ButStyleUA = "-fx-background-color:#6ED9A0; -fx-text-fill: white;";
         String ButStyleA = "-fx-background-color:#2A363F; -fx-text-fill: white;";

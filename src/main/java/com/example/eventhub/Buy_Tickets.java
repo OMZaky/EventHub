@@ -10,11 +10,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -81,6 +77,14 @@ public class Buy_Tickets{
                         VBox.setMargin(BuyBut, new Insets(ButtonMar,0,0,0));
                 });
 
+                JFXButton but4 = new JFXButton("Search");
+                but4.setStyle(ButStyleA);
+                GridPane.setHgrow(but4, Priority.ALWAYS);
+                GridPane.setVgrow(but4, Priority.ALWAYS);
+                but4.setMaxWidth(Double.MAX_VALUE);
+
+                but4.setOnAction(e -> sceneManager.switchToAttendeeSearch(a));
+
                 JFXButton LogOutBut = new JFXButton("Log out");
                 LogOutBut.setMaxWidth(Double.MAX_VALUE);
                 LogOutBut.setStyle(ButStyleA);
@@ -93,7 +97,7 @@ public class Buy_Tickets{
                 LogOutBut.setOnAction(e -> sceneManager.switchToLogout(a));
 
 
-                ButtonsVbox.getChildren().addAll(UserInfoBut,BuyBut,LogOutBut);
+                ButtonsVbox.getChildren().addAll(UserInfoBut,BuyBut,but4, LogOutBut);
 
                 Line l = new Line();
                 l.setStroke(Color.web("#465058"));

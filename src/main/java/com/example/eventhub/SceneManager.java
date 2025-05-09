@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class SceneManager {
     private Stage primaryStage;
-    private Attendee_Dashboard attendeeDashboard;
     private Scene loginScene;
     private Scene registerScene;
     private AttendeeHscreen attendeeHscreen;
@@ -25,6 +24,7 @@ public class SceneManager {
     private OrganizerInfo organizerInfo;
     private Organizer_CRUD organizerCrud;
     private OrganizerShow organizerShow;
+    private AttendeeSearch attendeeSearch;
 
 
 
@@ -110,6 +110,11 @@ public class SceneManager {
     public void switchToAttendeeHscreen(Attendee a) {
         attendeeHscreen = new AttendeeHscreen(a, this);
         primaryStage.setScene(attendeeHscreen.getScene());
+    }
+
+    public void switchToAttendeeSearch(Attendee a) {
+        attendeeSearch = new AttendeeSearch(a, this);
+        primaryStage.setScene(attendeeSearch.getScene());
     }
 
     public void switchToAttendeeInfo(Attendee a) {

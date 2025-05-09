@@ -112,3 +112,51 @@
  .date-picker-popup .spinner .label {
      -fx-text-fill: #E0E0E0 !important;
  }
+ /* dark-combobox.css */
+
+ /* Styling the main ComboBox */
+
+ .combo-box {
+     -fx-background-color: #2d2d2d; /* Dark background */
+     -fx-border-color: #404040;     /* Dark border */
+     -fx-text-fill: white;          /* Text color */
+     -fx-prompt-text-fill: #a0a0a0; /* Placeholder text color */
+ }
+
+ /* Arrow button styling */
+ .combo-box .arrow-button {
+     -fx-background-color: transparent; /* Transparent background for the arrow button */
+ }
+
+ /* Arrow icon color */
+ .combo-box .arrow {
+     -fx-background-color: white; /* White arrow */
+ }
+
+ /* Selected item display */
+ .combo-box .list-cell {
+     -fx-background-color: #2d2d2d; /* Dark background */
+     -fx-text-fill: white;          /* Text color */
+ }
+
+ /* Dropdown popup list */
+ .combo-box-popup .list-view {
+     -fx-background-color: #2d2d2d; /* Dark background for the dropdown */
+     -fx-border-color: #404040;     /* Border color */
+ }
+
+ /* Items in the dropdown */
+ .combo-box-popup .list-view .list-cell {
+     -fx-background-color: #2d2d2d; /* Default item background */
+     -fx-text-fill: white;          /* Default text color */
+ }
+
+ /* Hover effect on items */
+ .combo-box-popup .list-view .list-cell:hover {
+     -fx-background-color: #404040; /* Hover background */
+ }
+
+ /* Selected item in the dropdown */
+ .combo-box-popup .list-view .list-cell:selected {
+     -fx-background-color: #505050; /* Selected item background */
+ }
