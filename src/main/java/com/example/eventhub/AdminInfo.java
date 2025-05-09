@@ -91,7 +91,7 @@ public class AdminInfo{
         VBox.setMargin(CRUDbut, new Insets(ButtonMar, 0, 0, 0));
       });
 
-      //CRUDbut.setOnAction(e -> sceneManager.switchToAdminCRUD(a));
+      CRUDbut.setOnAction(e -> sceneManager.switchToAdminCRUD(a));
 
 
 

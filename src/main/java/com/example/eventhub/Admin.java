@@ -12,7 +12,9 @@ public class Admin extends Person implements Employee<Categories> {
     private final Calendar workBegin = Calendar.getInstance();
     private final Calendar workEnd = Calendar.getInstance();
     private String role;
-        
+    String texterr = "-fx-font-family:'Century Gothic'; -fx-font-size : 16;-fx-text-fill: #FF0000; ";
+
+
     Admin(){
         this(null,null,null, 0,0,0,0,0);
     }
@@ -47,18 +49,16 @@ public class Admin extends Person implements Employee<Categories> {
     }
     
     
-    public boolean addRoom(String capacity,VBox pwCapacity,VBox theButtonThatCreatesTheRoom) {
+    public boolean addRoom(String capacity,VBox pwCapacity) {
         boolean valid;
         if(capacity.matches("\\d+") && (Integer.valueOf(capacity)>0) ){ 
           valid = true;
         }
         else{
-        pwCapacity.getChildren().add(new Label("please enter a positive capacity value"));
         valid = false;
         }  
         if (valid){
             Database.rooms.add(new Room(Integer.valueOf(capacity)));
-            theButtonThatCreatesTheRoom.getChildren().add(pwCapacity);
             return true;
         }else{
             return false;
@@ -67,12 +67,12 @@ public class Admin extends Person implements Employee<Categories> {
     
     @Override
     public void create(String categoryName, VBox pwCategoryName){
-        /*
+
         Categories o = new Categories(categoryName,pwCategoryName);
         if (!o.getName().equals("<><><>")){
             Database.categories.add(o);
         }
-        */
+
     }
 
     @Override
@@ -81,25 +81,22 @@ public class Admin extends Person implements Employee<Categories> {
         return Database.categories.get(i).toString();
     }
 
-    @Override
-    public String toString(){
-        String adminInfo= "Username: " + this.getUsername()+ "\n"+ "role: " + this.role + "\n" + "Working hours: " +
-                (workEnd.get(Calendar.HOUR_OF_DAY)-workBegin.get(Calendar.HOUR_OF_DAY));
 
-        return adminInfo;
-    }
-    
-    @Override 
-    public void update(Categories o,String newName, VBox theInputOfTheNewName){
+
+    @Override
+    public void update(Categories o,String newName, VBox theInputOfTheNewName,VBox theInputOfTheCategory){
         for(Categories c : Database.categories){
             if(o == c){
                 if(!newName.equals("<><><>")){
-                o.setName(newName);
-                break;
+                    o.setName(newName);
+                    break;
                 }
                 else{
-                theInputOfTheNewName.getChildren().add(new Label("the new category name exists please try again"));
-                }     
+                    Label errormsg = new Label("the new category name");
+                    errormsg.setStyle(texterr);
+                    theInputOfTheNewName.getChildren().add(errormsg);
+                    theInputOfTheCategory.getChildren().add(new Label(""));
+                }
             }
         }
     }
@@ -129,6 +126,14 @@ public class Admin extends Person implements Employee<Categories> {
         
         System.out.printf("%-20s %-20s %-20s %n","Room No."+room,event,attendee );
         }
+    }
+
+    @Override
+    public String toString(){
+        String adminInfo= "Username: " + this.getUsername()+ "\n"+ "role: " + this.role + "\n" + "Working hours: " +
+                (workEnd.get(Calendar.HOUR_OF_DAY)-workBegin.get(Calendar.HOUR_OF_DAY));
+
+        return adminInfo;
     }
 
 

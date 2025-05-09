@@ -106,7 +106,7 @@ public class AdminShow {
             VBox.setMargin(CRUDbut, new Insets(ButtonMar,0,0,0));
         });
 
-        //CRUDbut.setOnAction(e -> sceneManager.switchToAdminCRUD(admin));
+        CRUDbut.setOnAction(e -> sceneManager.switchToAdminCRUD(admin));
 
 
 
@@ -202,10 +202,10 @@ public class AdminShow {
             Graphcont.getColumnConstraints().addAll(colgrid1, colgrid2 ,colgrid3);
             Label TableLab1 = new Label(event);
             TableLab1.setStyle(textTable);
-            Label TableLab2 = new Label(attendee);
-            TableLab1.setStyle(textTable);
-            Label TableLab3 = new Label("Room No. " + room);
-            TableLab1.setStyle(textTable);
+            Label TableLab2 = new Label("  " + attendee);
+            TableLab2.setStyle(textTable);
+            Label TableLab3 = new Label("   Room No. " + room);
+            TableLab3.setStyle(textTable);
             Graphcont.add(TableLab1, 0 ,0);
             Graphcont.add(TableLab2, 1 ,0);
             Graphcont.add(TableLab3, 2 ,0);

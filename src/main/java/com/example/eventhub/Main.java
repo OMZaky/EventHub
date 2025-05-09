@@ -14,7 +14,7 @@ public class Main extends Application {
         Admin admin = new Admin("Noah", "123", "Developer", 1990, 5, 5, 8, 18);
         Database.people.add(admin);
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.switchToAdminSearch(admin); // Start with the login scene
+        sceneManager.switchToLogin(); // Start with the login scene
         stage.setTitle("APP");
         stage.setWidth(700);
         stage.setHeight(450);

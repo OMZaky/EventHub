@@ -20,6 +20,7 @@ public class SceneManager {
     private AdminInfo adminInfo;
     private AdminShow adminShow;
     private AdminSearch adminSearch;
+    private AdminCRUD adminCRUD;
     private OrganizerHscreen organizerHscreen;
     private OrganizerInfo organizerInfo;
     private Organizer_CRUD organizerCrud;
@@ -89,6 +90,11 @@ public class SceneManager {
     public void switchToAdminSearch(Admin admin){
         adminSearch = new AdminSearch(admin, this);
         primaryStage.setScene(adminSearch.getScene());
+    }
+
+    public void switchToAdminCRUD(Admin admin){
+        adminCRUD = new AdminCRUD(admin, this);
+        primaryStage.setScene(adminCRUD.getScene());
     }
 
     public void switchToAdminShow(Admin admin){

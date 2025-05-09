@@ -108,7 +108,7 @@ public class AdminHscreen{
         but3.setMaxWidth(Double.MAX_VALUE);
 
 
-        //but3.setOnAction(e -> sceneManager.switchToCrudCategories(admin));
+        but3.setOnAction(e -> sceneManager.switchToAdminCRUD(admin));
 
         JFXButton but4 = new JFXButton("Search");
         but4.setStyle(ButStyleUA);
