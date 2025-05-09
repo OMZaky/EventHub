@@ -215,19 +215,19 @@ public class AdminSearch {
                     address.setStyle(textTable);
 
                     Label Attendeename1 = new Label(w.getUsername());
-                    Attendeename1.setStyle(textTable);
+                    Attendeename1.setStyle(textNormal);
                     Label gender1 = new Label(
                             switch (w.getGender()){
                                 case Gender.MALE -> "Male";
                                 case Gender.FEMALE -> "Female";
                             });
-                    gender1.setStyle(textTable);
+                    gender1.setStyle(textNormal);
                     Label balance1 = new Label(String.valueOf(w.getWallet().getBalance()));
-                    balance1.setStyle(textTable);
+                    balance1.setStyle(textNormal);
                     Label Dob1 = new Label(w.getFormattedbirthDate());
-                    Dob1.setStyle(textTable);
+                    Dob1.setStyle(textNormal);
                     Label address1 = new Label(w.getAddress());
-                    address1.setStyle(textTable);
+                    address1.setStyle(textNormal);
 
 
                     GraphStart.add(Attendeename, 0, 0);
@@ -276,13 +276,13 @@ public class AdminSearch {
                     Dob.setStyle(textTable);
 
                     Label Attendeename1 = new Label(w.getUsername());
-                    Attendeename1.setStyle(textTable);
+                    Attendeename1.setStyle(textNormal);
 
                     Label balance1 = new Label(String.valueOf(w.getWallet().getBalance()));
-                    balance1.setStyle(textTable);
+                    balance1.setStyle(textNormal);
 
                     Label Dob1 = new Label(w.getFormattedbirthDate());
-                    Dob1.setStyle(textTable);
+                    Dob1.setStyle(textNormal);
 
 
 
