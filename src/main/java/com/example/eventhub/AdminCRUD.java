@@ -349,7 +349,7 @@ public class AdminCRUD {
             
             pwCom.getChildren().removeIf(node -> node instanceof Label);
             Label read = new Label (a.read(((Categories)combobox.getValue())));
-            read.translateYProperty().bind(functionality.heightProperty().multiply(0.30));
+            read.translateYProperty().bind(functionality.heightProperty().multiply(0.07));
             read.setStyle(textTable);
             pwCom.getChildren().add(read);
             combobox.setValue(null);
@@ -366,7 +366,7 @@ public class AdminCRUD {
         
         Buttons.add(but4, 3 ,0);
         
-        but3.setOnAction(e -> {
+        but4.setOnAction(e -> {
         functionality.getChildren().clear();
         
         VBox cap= new VBox();

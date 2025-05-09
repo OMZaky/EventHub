@@ -11,10 +11,14 @@ import java.util.*;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Attendee attendee3 = new Attendee(new Wallet(15000), Gender.MALE, "Rehab", new ArrayList<>(List.of("Parties", "Snorkling", "Bachelor Party")), "Omar", "123", 2000,5 ,5 );
         Admin admin = new Admin("Noah", "123", "Developer", 1990, 5, 5, 8, 18);
         Database.people.add(admin);
+        Database.people.add(attendee3);
+
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.switchToLogin(); // Start with the login scene
+        sceneManager.switchToAttendeeSearch(attendee3); // Start with the login scene
+        
         stage.setTitle("APP");
         stage.setWidth(700);
         stage.setHeight(450);
@@ -41,7 +45,6 @@ public class Main extends Application {
 
          Attendee attendee1 = new Attendee(new Wallet(25000), Gender.MALE, "Nasr City", new ArrayList<>(List.of("Birthdays", "Football", "Tv Shows")), "Mohamed", "MyPassword", 1980,7,16);
          Attendee attendee2 = new Attendee(new Wallet(20000), Gender.FEMALE, "Tagamo3", new ArrayList<>(List.of("Wedding", "Movies", "Skating")), "Mariam", "MyPassword", 2000,2,2);
-         Attendee attendee3 = new Attendee(new Wallet(15000), Gender.MALE, "Rehab", new ArrayList<>(List.of("Parties", "Snorkling", "Bachelor Party")), "Omar", "123", 2000,5 ,5 );
 
          Room room1 = new Room(100);
          Room room2 = new Room(60);
@@ -63,7 +66,7 @@ public class Main extends Application {
 
 
 
-         Database.people.addAll(Arrays.asList(attendee1, attendee2, attendee3, organizer1, organizer2, organizer3));
+         Database.people.addAll(Arrays.asList(attendee1, attendee2, organizer1, organizer2, organizer3));
          Database.events.addAll(Arrays.asList(event1, event2, event3));
          Database.rooms.addAll(Arrays.asList(room1, room2, room3));
          Database.categories.addAll(Arrays.asList(Wedding, Birthday, Conference));

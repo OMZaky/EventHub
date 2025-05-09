@@ -78,6 +78,15 @@ public class Organizer_CRUD {
             VBox.setMargin(CRUDbut, new Insets(ButtonMar, 0, 0, 0));
         });
 
+        JFXButton but4 = new JFXButton("Search");
+        but4.disableProperty().set(true);
+        but4.setStyle(ButStyleUA);
+        GridPane.setHgrow(but4, Priority.ALWAYS);
+        GridPane.setVgrow(but4, Priority.ALWAYS);
+        but4.setMaxWidth(Double.MAX_VALUE);
+
+        but4.setOnAction(e -> sceneManager.switchToOrganizerSearch(organizer));
+
 
         JFXButton LogOutBut = new JFXButton("Log out");
         LogOutBut.setMaxWidth(Double.MAX_VALUE);
