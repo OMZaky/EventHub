@@ -1,10 +1,13 @@
 package com.example.eventhub;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.layout.VBox;
@@ -20,6 +23,8 @@ public abstract class Person {
     private String password;
     private final Calendar dateOfBirth = Calendar.getInstance() ;
     protected boolean loggedIn;
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+    private String formattedDate;
     
     Person(){
     }
@@ -32,8 +37,16 @@ public abstract class Person {
         this.dateOfBirth.set(Calendar.YEAR, yearOfBirth);
         this.dateOfBirth.set(Calendar.MONTH, monthOfBirth - 1);
         this.dateOfBirth.set(Calendar.DAY_OF_MONTH, dayOfBirth);
+        this.formattedDate = dateFormat.format(this.dateOfBirth.getTime());
 
 
+    }
+
+    public String getFormattedbirthDate() {
+        if (formattedDate == null) {
+            return dateFormat.format(dateOfBirth.getTime());
+        }
+        return formattedDate;
     }
     
     protected String getUsername(){
