@@ -17,6 +17,9 @@ public class SceneManager {
     private Buy_Tickets buyTickets;
     private Scene logoutScene;
     private AdminHscreen adminHscreen;
+    private AdminInfo adminInfo;
+    private AdminShow adminShow;
+    private AdminSearch adminSearch;
     private OrganizerHscreen organizerHscreen;
     private OrganizerInfo organizerInfo;
     private Organizer_CRUD organizerCrud;
@@ -81,6 +84,21 @@ public class SceneManager {
     public void switchToAdminHscreen(Admin admin){
     adminHscreen = new AdminHscreen(admin, this);
     primaryStage.setScene(adminHscreen.getScene());
+    }
+
+    public void switchToAdminSearch(Admin admin){
+        adminSearch = new AdminSearch(admin, this);
+        primaryStage.setScene(adminSearch.getScene());
+    }
+
+    public void switchToAdminShow(Admin admin){
+        adminShow= new AdminShow(admin, this);
+        primaryStage.setScene(adminShow.getScene());
+    }
+
+    public void switchToAdminInfo(Admin admin){
+        adminInfo = new AdminInfo(admin, this);
+        primaryStage.setScene(adminInfo.getScene());
     }
 
     public void switchToAttendeeHscreen(Attendee a) {

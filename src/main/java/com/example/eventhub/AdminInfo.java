@@ -1,32 +1,32 @@
 package com.example.eventhub;
 
-import com.example.eventhub.Admin;
 import com.jfoenix.controls.JFXButton;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
 
 
 public class AdminInfo{
 
     private Admin a;
+    private Scene root;
 
-    public AdminInfo(Admin a, SceneManager sceneManager) {
+  public Scene getScene() {
+    return root;
+  }
+
+  public AdminInfo(Admin a, SceneManager sceneManager) {
         this.a = a;
 
       String styleBg = "-fx-background-color: #2A363F;";
@@ -59,24 +59,28 @@ public class AdminInfo{
       leftHbox.getChildren().addAll(ButtonsVbox, linePane);
 
       JFXButton UserInfoBut = new JFXButton("User Info");
+      UserInfoBut.disableProperty().set(true);
       UserInfoBut.setMaxWidth(Double.MAX_VALUE);
-      UserInfoBut.setStyle(ButStyleA);
+      UserInfoBut.setStyle(ButStyleUA);
       UserInfoBut.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
       ButtonsVbox.heightProperty().addListener((obs, oldPad, newPad) -> {
         double ButtonPadding = ButtonsVbox.getHeight() * 0.08;
         ButtonsVbox.setPadding(new Insets(ButtonPadding, 0, 0, 0));
       });
 
+      UserInfoBut.setOnAction(e -> sceneManager.switchToAdminInfo(a));
+
 
       JFXButton ShowBut = new JFXButton("Show Data");
-      ShowBut.disableProperty().set(true);
       ShowBut.setMaxWidth(Double.MAX_VALUE);
-      ShowBut.setStyle(ButStyleUA);
+      ShowBut.setStyle(ButStyleA);
       ShowBut.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
       ButtonsVbox.heightProperty().addListener((obs, oldPad, newPad) -> {
         double ButtonMar = ButtonsVbox.getHeight() * 0.025;
         VBox.setMargin(ShowBut, new Insets(ButtonMar, 0, 0, 0));
       });
+
+      ShowBut.setOnAction(e -> sceneManager.switchToAdminShow(a));
 
       JFXButton CRUDbut = new JFXButton("CRUD");
       CRUDbut.setMaxWidth(Double.MAX_VALUE);
@@ -86,6 +90,21 @@ public class AdminInfo{
         double ButtonMar = ButtonsVbox.getHeight() * 0.025;
         VBox.setMargin(CRUDbut, new Insets(ButtonMar, 0, 0, 0));
       });
+
+      //CRUDbut.setOnAction(e -> sceneManager.switchToAdminCRUD(a));
+
+
+
+      JFXButton Searchbut = new JFXButton("Search");
+      Searchbut.setMaxWidth(Double.MAX_VALUE);
+      Searchbut.setStyle(ButStyleA);
+      Searchbut.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
+      ButtonsVbox.heightProperty().addListener((obs, oldPad, newPad) -> {
+        double ButtonMar = ButtonsVbox.getHeight() * 0.025;
+        VBox.setMargin(Searchbut, new Insets(ButtonMar, 0, 0, 0));
+      });
+
+      Searchbut.setOnAction(e -> sceneManager.switchToAdminSearch(a));
 
 
       JFXButton LogOutBut = new JFXButton("Log out");
@@ -97,7 +116,9 @@ public class AdminInfo{
         VBox.setMargin(LogOutBut, new Insets(ButtonMar, 0, 0, 0));
       });
 
-      ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut, LogOutBut);
+      LogOutBut.setOnAction(e -> sceneManager.switchToLogout(a));
+
+      ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut,Searchbut, CRUDbut, LogOutBut);
 
       Line l = new Line();
       l.setStroke(Color.web("#465058"));
@@ -115,7 +136,7 @@ public class AdminInfo{
 
 
       VBox Body = new VBox();
-      Label welcomin = new Label("Welcome" + a.getUsername() );
+      Label welcomin = new Label("Welcome, " + a.getUsername() );
       welcomin.setStyle(textHeader);
 
       GridPane usernameAndProfile = new GridPane();
@@ -159,7 +180,7 @@ public class AdminInfo{
       Label role = new Label("Role : " + a.getRole());
       role.setStyle(textNormal);
 
-      Label workinghours = new Label("Working Hours : " + a.getWorkBegin() + "to" + a.getWorkEnd());
+      Label workinghours = new Label("Working Hours : " + a.getWorkBegin() + ":00  to  " + a.getWorkEnd() + ":00");
       workinghours.setStyle(textNormal);
 
 
@@ -195,7 +216,7 @@ public class AdminInfo{
       Body.getChildren().addAll(usernameAndProfile, info, theLines);
       BorPane.setCenter(Body);
 
-      Scene root = new Scene(BorPane, 600, 400);
+      root = new Scene(BorPane, 600, 400);
     }
 
 

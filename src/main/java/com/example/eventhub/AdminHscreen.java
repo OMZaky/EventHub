@@ -8,9 +8,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-import java.text.SimpleDateFormat;
+
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class AdminHscreen{
     private Admin admin;
@@ -58,13 +57,14 @@ public class AdminHscreen{
         l2.endYProperty().bind(theLines.heightProperty().multiply(0.3));
         theLines.getChildren().addAll(l1, l2);
 
-        GridPane Buttons = new GridPane();
-        Buttons.prefHeightProperty().bind(HomePageAT.heightProperty().multiply(0.20));
-        Buttons.setVgap(30);
-        Buttons.setHgap(30);
+        GridPane Buttons1 = new GridPane();
+        GridPane Buttons2 = new GridPane();
+        Buttons1.prefHeightProperty().bind(HomePageAT.heightProperty().multiply(0.20));
+        Buttons1.setVgap(30);
+        Buttons1.setHgap(30);
         HomePageAT.widthProperty().addListener((obs, oldPad, newPad) -> {
             double ButtonMar = HomePageAT.getWidth() * 0.045;
-            VBox.setMargin(Buttons, new Insets(0, ButtonMar, 0, ButtonMar));
+            VBox.setMargin(Buttons1, new Insets(0, ButtonMar, 0, ButtonMar));
         });
 
         ColumnConstraints colgrid1 = new ColumnConstraints();
@@ -75,40 +75,62 @@ public class AdminHscreen{
         colgrid3.setPercentWidth(25);
         ColumnConstraints colgrid4 = new ColumnConstraints();
         colgrid3.setPercentWidth(25);
-        Buttons.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3, colgrid4);
+        Buttons1.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3, colgrid4);
+
+        ColumnConstraints colgrid5 = new ColumnConstraints();
+        colgrid5.setPercentWidth(33);
+        ColumnConstraints colgrid6 = new ColumnConstraints();
+        colgrid6.setPercentWidth(33);
+        ColumnConstraints colgrid7 = new ColumnConstraints();
+        colgrid7.setPercentWidth(34);
+        Buttons2.getColumnConstraints().addAll(colgrid5, colgrid6, colgrid7);
 
         JFXButton but1 = new JFXButton("Admin Info");
         but1.setStyle(ButStyleUA);
         GridPane.setHgrow(but1, Priority.ALWAYS);
         GridPane.setVgrow(but1, Priority.ALWAYS);
         but1.setMaxWidth(Double.MAX_VALUE);
-        //but1.setOnAction(e -> sceneManager.switchToAdminInfo(admin));
+
+        but1.setOnAction(e -> sceneManager.switchToAdminInfo(admin));
 
         JFXButton but2 = new JFXButton("Show Data");
         but2.setStyle(ButStyleUA);
         GridPane.setHgrow(but2, Priority.ALWAYS);
         GridPane.setVgrow(but2, Priority.ALWAYS);
         but2.setMaxWidth(Double.MAX_VALUE);
-        //but2.setOnAction(e -> sceneManager.switchToShowdata(admin));
+
+        but2.setOnAction(e -> sceneManager.switchToAdminShow(admin));
 
         JFXButton but3 = new JFXButton("Crud Categories");
         but3.setStyle(ButStyleUA);
         GridPane.setHgrow(but3, Priority.ALWAYS);
         GridPane.setVgrow(but3, Priority.ALWAYS);
         but3.setMaxWidth(Double.MAX_VALUE);
+
+
         //but3.setOnAction(e -> sceneManager.switchToCrudCategories(admin));
 
-        JFXButton but4 = new JFXButton("Logout");
+        JFXButton but4 = new JFXButton("Search");
         but4.setStyle(ButStyleUA);
         GridPane.setHgrow(but4, Priority.ALWAYS);
         GridPane.setVgrow(but4, Priority.ALWAYS);
         but4.setMaxWidth(Double.MAX_VALUE);
-        but4.setOnAction(e -> sceneManager.switchToLogout(admin));
 
-        Buttons.add(but1, 0, 0);
-        Buttons.add(but2, 1, 0);
-        Buttons.add(but3, 2, 0);
-        Buttons.add(but4, 3,0);
+        but4.setOnAction(e -> sceneManager.switchToAdminSearch(admin));
+
+        JFXButton but5 = new JFXButton("Logout");
+        but5.setStyle(ButStyleUA);
+        GridPane.setHgrow(but5, Priority.ALWAYS);
+        GridPane.setVgrow(but5, Priority.ALWAYS);
+        but5.setMaxWidth(Double.MAX_VALUE);
+
+        but5.setOnAction(e -> sceneManager.switchToLogout(admin));
+
+        Buttons1.add(but1, 0, 0);
+        Buttons1.add(but2, 1, 0);
+        Buttons1.add(but3, 2, 0);
+        Buttons1.add(but4, 3,0);
+        Buttons2.add(but5, 1,0);
         ScrollPane scroller = new ScrollPane();
         scroller.setFitToWidth(true);
         scroller.setFitToHeight(true);
@@ -217,7 +239,7 @@ public class AdminHscreen{
         scroller.setContent(stack);
 
 
-        HomePageAT.getChildren().addAll(name, theLines, Buttons, scroller);
+        HomePageAT.getChildren().addAll(name, theLines, Buttons1,Buttons2, scroller);
         root = new Scene(HomePageAT, 600, 400);
     }
 

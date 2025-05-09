@@ -29,7 +29,6 @@ public class Attendee extends Person {
         this.address = address;
         this.gender = gender;
         this.interests = interests;
-        Database.people.add(this);
     }
 
     public String getAddress() {

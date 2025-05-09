@@ -19,7 +19,8 @@ public class Event implements Cloneable{
     private int cost;
     private int attendeeNum;
     private Room room;
-
+    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+    private String formattedDate; // Remove initialization here
 
 
     Event(){}
@@ -28,22 +29,28 @@ public class Event implements Cloneable{
         this.name = name;
         this.category = category;
         this.ticketPrice = ticketPrice;
-        this.eventTime = (Calendar) eventTime.clone() ;
+        this.eventTime.setTime(eventTime.getTime());
+        this.formattedDate = dateFormat.format(this.eventTime.getTime());
         this.room = room;
         this.madeBy = madeBy;
         Reservations res = new Reservations();
         res.reserve(room, eventTime, DnN,this);
     }
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-    private String  formattedDate = dateFormat.format(eventTime.getTime());
+
+    public String getFormattedDate() {
+        if (formattedDate == null) {
+            return dateFormat.format(eventTime.getTime());
+        }
+        return formattedDate;
+    }
+
+
 
     public Organizer getMadeBy() {
         return madeBy;
     }
 
-    public String getFormattedDate() {
-        return formattedDate;
-    }
+
 
     public void setMadeBy(Organizer madeBy) {
         this.madeBy = madeBy;

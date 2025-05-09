@@ -11,8 +11,10 @@ import java.util.*;
 public class Main extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        Admin admin = new Admin("Noah", "123", "Developer", 1990, 5, 5, 8, 18);
+        Database.people.add(admin);
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.switchToLogin(); // Start with the login scene
+        sceneManager.switchToAdminSearch(admin); // Start with the login scene
         stage.setTitle("APP");
         stage.setWidth(700);
         stage.setHeight(450);
@@ -22,6 +24,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
+
 
         Scanner input = new Scanner(System.in);
         Calendar calendar = Calendar.getInstance();
@@ -52,7 +55,6 @@ public class Main extends Application {
          Organizer organizer2 = new Organizer("Farah", "123", 4, 4, 2000, 40000);
          Organizer organizer3 = new Organizer("Sarah", "MyPassword", 6, 6, 2000, 30000);
 
-         Admin admin = new Admin("Noah", "123", "Developer", 1990, 5, 5, 8, 18);
 
 
          Event event1 = new Event("Ali's Wedding", Wedding, 1000, calendar1, room1, organizer1, "Morning");
@@ -61,7 +63,7 @@ public class Main extends Application {
 
 
 
-         Database.people.addAll(Arrays.asList(attendee1, attendee2, attendee3, organizer1, organizer2, organizer3, admin));
+         Database.people.addAll(Arrays.asList(attendee1, attendee2, attendee3, organizer1, organizer2, organizer3));
          Database.events.addAll(Arrays.asList(event1, event2, event3));
          Database.rooms.addAll(Arrays.asList(room1, room2, room3));
          Database.categories.addAll(Arrays.asList(Wedding, Birthday, Conference));
