@@ -74,27 +74,32 @@ public class OrganizerHscreen {
         GridPane.setHgrow(but1, Priority.ALWAYS);
         GridPane.setVgrow(but1, Priority.ALWAYS);
         but1.setMaxWidth(Double.MAX_VALUE);
-       // but1.setOnAction(e -> sceneManager.switchToOrganzizerInfo(o));
+
+        but1.setOnAction(e -> sceneManager.switchToOrganizerInfo(o));
 
         JFXButton but2 = new JFXButton("Show Data");
         but2.setStyle(ButStyleUA);
         GridPane.setHgrow(but2, Priority.ALWAYS);
         GridPane.setVgrow(but2, Priority.ALWAYS);
         but2.setMaxWidth(Double.MAX_VALUE);
-        //but2.setOnAction(e -> sceneManager.switchToShowdata(o));
+
+        but2.setOnAction(e -> sceneManager.switchToOrganizerShow(o));
 
         JFXButton but3 = new JFXButton("Crud Events");
         but3.setStyle(ButStyleUA);
         GridPane.setHgrow(but3, Priority.ALWAYS);
         GridPane.setVgrow(but3, Priority.ALWAYS);
         but3.setMaxWidth(Double.MAX_VALUE);
-        //but3.setOnAction(e -> sceneManager.switchToCrudEvents(o));
+
+
+        but3.setOnAction(e -> sceneManager.switchToOrganizerCRUD(o));
 
         JFXButton but4 = new JFXButton("Logout");
         but4.setStyle(ButStyleUA);
         GridPane.setHgrow(but4, Priority.ALWAYS);
         GridPane.setVgrow(but4, Priority.ALWAYS);
         but4.setMaxWidth(Double.MAX_VALUE);
+
         but4.setOnAction(e -> sceneManager.switchToLogout(o));
 
         Buttons.add(but1, 0, 0);

@@ -10,9 +10,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class Organizer_CRUD {
+    private Organizer organizer;
+    private Scene root;
+
+    public Scene getScene() {
+        return root;
+    }
 
     public Organizer_CRUD(Organizer organizer, SceneManager sceneManager){
 
+        this.organizer = organizer;
         String styleBg = "-fx-background-color: #2A363F;";
         String ButStyleUA = "-fx-background-color:#6ED9A0; -fx-text-fill: white;";
         String ButStyleA = "-fx-background-color:#2A363F; -fx-text-fill: white;";
@@ -196,7 +203,7 @@ public class Organizer_CRUD {
         crudMain.getChildren().addAll(crudnamelocate,Buttons,functionality,Room);
 
         BorPane.setCenter(crudMain);
-        Scene root = new Scene(BorPane, 600, 400);
+        root = new Scene(BorPane, 600, 400);
 
 
     }

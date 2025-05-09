@@ -35,9 +35,14 @@ import javafx.scene.shape.Line;
  * @author omara
  */
 public class OrganizerShow {
-    Organizer o;
+    private Organizer o;
+    private Scene root;
 
-    public OrganizerShow(Organizer o) {
+    public Scene getScene() {
+        return root;
+    }
+
+    public OrganizerShow(Organizer o, SceneManager sceneManager) {
         this.o = o;        
         String styleBg = "-fx-background-color: #2A363F;";
         String ButStyleUA = "-fx-background-color:#6ED9A0; -fx-text-fill: white;";
@@ -293,7 +298,7 @@ public class OrganizerShow {
         
         BorPane.setCenter(totalSituation);
         
-        Scene root = new Scene(BorPane,600,400);
+        root = new Scene(BorPane,600,400);
         
         
     }

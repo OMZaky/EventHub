@@ -18,6 +18,9 @@ public class SceneManager {
     private Scene logoutScene;
     private AdminHscreen adminHscreen;
     private OrganizerHscreen organizerHscreen;
+    private OrganizerInfo organizerInfo;
+    private Organizer_CRUD organizerCrud;
+    private OrganizerShow organizerShow;
 
 
 
@@ -53,6 +56,21 @@ public class SceneManager {
         logoutController.setSceneManager(this);
         logoutScene = new Scene(logoutRoot, 320, 240);
 
+    }
+
+    public void switchToOrganizerInfo(Organizer organizer){
+        organizerInfo = new OrganizerInfo(organizer, this);
+        primaryStage.setScene(organizerInfo.getScene());
+    }
+
+    public void switchToOrganizerShow(Organizer organizer){
+        organizerShow = new OrganizerShow(organizer, this);
+        primaryStage.setScene(organizerShow.getScene());
+    }
+
+    public void switchToOrganizerCRUD(Organizer organizer){
+        organizerCrud = new Organizer_CRUD(organizer, this);
+        primaryStage.setScene(organizerCrud.getScene());
     }
 
     public void switchToOrganizerHscreen(Organizer organizer){

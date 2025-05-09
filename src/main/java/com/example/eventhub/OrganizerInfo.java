@@ -1,30 +1,30 @@
 package com.example.eventhub;
 
-import com.example.eventhub.Organizer;
 import com.jfoenix.controls.JFXButton;
-import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
-import javafx.stage.Stage;
 
 
 public class OrganizerInfo{
 
     private Organizer o;
+    private Scene root;
+
+    public Scene getScene() {
+        return root;
+    }
 
     public OrganizerInfo(Organizer o, SceneManager sceneManager) {
         this.o = o;
@@ -195,7 +195,7 @@ public class OrganizerInfo{
         Body.getChildren().addAll(usernameAndProfile, info, theLines);
         BorPane.setCenter(Body);
 
-        Scene root = new Scene(BorPane, 600, 400);
+        root = new Scene(BorPane, 600, 400);
     }
 
 }
