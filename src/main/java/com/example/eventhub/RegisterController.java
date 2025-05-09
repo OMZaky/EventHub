@@ -22,7 +22,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegisterController implements fxmlSceneController {
+public class RegisterController implements FxmlSceneController {
 
     // FXML Components
     @FXML private Line MyLine;

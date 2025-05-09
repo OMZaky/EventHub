@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 import static javafx.application.Platform.exit;
 
 
-public class LoginController implements fxmlSceneController{
+public class LoginController implements FxmlSceneController{
     @FXML
     private Label welcomeText;
     @FXML

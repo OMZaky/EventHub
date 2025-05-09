@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 
 import static javafx.application.Platform.exit;
 
-public class LogoutController implements fxmlSceneController{
+public class LogoutController implements FxmlSceneController{
 
     private SceneManager sceneManager;
     private Person person;

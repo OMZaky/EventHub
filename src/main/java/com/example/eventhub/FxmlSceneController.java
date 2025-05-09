@@ -1,6 +1,6 @@
 package com.example.eventhub;
 
-public interface fxmlSceneController {
+public interface FxmlSceneController {
 
     void setSceneManager(SceneManager sceneManager);
 
