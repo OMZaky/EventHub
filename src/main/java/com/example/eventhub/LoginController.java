@@ -126,8 +126,8 @@ public class LoginController implements SceneController{
             }
         }
 
-        Username.setText("");
-        Password.setText("");
+        Username.clear();
+        Password.clear();
         imageContainer.requestFocus();
 
 
@@ -137,6 +137,9 @@ public class LoginController implements SceneController{
     @FXML
     public void RegisterButton(){
         sceneManager.switchToRegister();
+        Username.clear();
+        Password.clear();
+        imageContainer.requestFocus();
     }
 
 

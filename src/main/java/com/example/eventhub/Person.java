@@ -32,6 +32,8 @@ public abstract class Person {
         this.dateOfBirth.set(Calendar.YEAR, yearOfBirth);
         this.dateOfBirth.set(Calendar.MONTH, monthOfBirth - 1);
         this.dateOfBirth.set(Calendar.DAY_OF_MONTH, dayOfBirth);
+
+
     }
     
     protected String getUsername(){
@@ -97,7 +99,7 @@ public abstract class Person {
 
             Person foundUser = null;
             for (Person p : Database.people) {
-                if (username.equals(p.username)) {
+                if (username.equalsIgnoreCase(p.username)) {
                     foundUser = p;
                     break;
                 }
@@ -123,12 +125,10 @@ public abstract class Person {
         pwUsername.getChildren().removeIf(node -> node instanceof Text);
 
         if (!Person.CheckUsername(username)) {
-            Text text = new Text("Username Not Found");
-            text.setFill(Color.RED);
-            text.setFont(Font.font("Arial", FontWeight.NORMAL, 12));
-            pwUsername.getChildren().add(text);
             return false;
-        }else return true;
+        }else{
+            return true;
+        }
     }
 
 
@@ -167,7 +167,7 @@ protected static void PasswordCheck(Person p, String password, VBox pwPassword){
 
             for (Person p : Database.people)
             {
-                if (username.equals(p.username))
+                if (p.username.equalsIgnoreCase(username))
                 {
                     taken = true;
                     break;
