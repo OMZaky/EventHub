@@ -49,7 +49,7 @@ public class Main extends Application {
          Categories Conference = new Categories("Conference", null);
 
          Organizer organizer1 = new Organizer("Maged", "MyPassword", 3, 3, 2000, 50000);
-         Organizer organizer2 = new Organizer("Farah", "MyPassword", 4, 4, 2000, 40000);
+         Organizer organizer2 = new Organizer("Farah", "123", 4, 4, 2000, 40000);
          Organizer organizer3 = new Organizer("Sarah", "MyPassword", 6, 6, 2000, 30000);
 
          Admin admin = new Admin("Noah", "123", "Developer", 1990, 5, 5, 8, 18);

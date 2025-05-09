@@ -78,6 +78,9 @@ public class OrganizerInfo{
             VBox.setMargin(ShowBut, new Insets(ButtonMar, 0, 0, 0));
         });
 
+        ShowBut.setOnAction(e -> sceneManager.switchToOrganizerShow(o));
+
+
         JFXButton CRUDbut = new JFXButton("CRUD");
         CRUDbut.setMaxWidth(Double.MAX_VALUE);
         CRUDbut.setStyle(ButStyleA);
@@ -86,6 +89,8 @@ public class OrganizerInfo{
             double ButtonMar = ButtonsVbox.getHeight() * 0.025;
             VBox.setMargin(CRUDbut, new Insets(ButtonMar, 0, 0, 0));
         });
+
+        CRUDbut.setOnAction(e -> sceneManager.switchToOrganizerCRUD(o));
 
 
         JFXButton LogOutBut = new JFXButton("Log out");
@@ -96,6 +101,8 @@ public class OrganizerInfo{
             double ButtonMar = ButtonsVbox.getHeight() * 0.025;
             VBox.setMargin(LogOutBut, new Insets(ButtonMar, 0, 0, 0));
         });
+
+        LogOutBut.setOnAction(e -> sceneManager.switchToLogout(o));
 
         ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut, LogOutBut);
 
