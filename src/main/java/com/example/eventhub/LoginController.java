@@ -118,7 +118,7 @@ public class LoginController implements SceneController{
         }
         switch (user) {
             case Attendee w -> sceneManager.switchToAttendeeHscreen(w);
-            //case Organizer w -> sceneManager.switchToOrganizerHscreen(w);
+            case Organizer w -> sceneManager.switchToOrganizerHscreen(w);
             case Admin w -> sceneManager.switchToAdminHscreen(w);
             default -> {
                 showError("Error");

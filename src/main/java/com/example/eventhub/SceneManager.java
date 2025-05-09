@@ -17,6 +17,7 @@ public class SceneManager {
     private Buy_Tickets buyTickets;
     private Scene logoutScene;
     private AdminHscreen adminHscreen;
+    private OrganizerHscreen organizerHscreen;
 
 
 
@@ -52,6 +53,11 @@ public class SceneManager {
         logoutController.setSceneManager(this);
         logoutScene = new Scene(logoutRoot, 320, 240);
 
+    }
+
+    public void switchToOrganizerHscreen(Organizer organizer){
+        organizerHscreen = new OrganizerHscreen(organizer, this);
+        primaryStage.setScene(organizerHscreen.getScene());
     }
 
     public void switchToAdminHscreen(Admin admin){

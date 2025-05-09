@@ -1,4 +1,5 @@
 package com.example.eventhub;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.InputMismatchException;
@@ -28,6 +29,16 @@ public class Admin extends Person implements Employee<Categories> {
     
     public String getRole(){
         return role;
+    }
+
+    public String getWorkBegin() {
+        SimpleDateFormat militaryTimeFormat = new SimpleDateFormat("HH");
+        return militaryTimeFormat.format(workBegin.getTime());
+    }
+
+    public String getWorkEnd() {
+        SimpleDateFormat militaryTimeFormat = new SimpleDateFormat("HH");
+        return militaryTimeFormat.format(workEnd.getTime());
     }
 
 
@@ -68,6 +79,14 @@ public class Admin extends Person implements Employee<Categories> {
     public String read(Categories o){
         int i =Database.categories.indexOf(o);
         return Database.categories.get(i).toString();
+    }
+
+    @Override
+    public String toString(){
+        String adminInfo= "Username: " + this.getUsername()+ "\n"+ "role: " + this.role + "\n" + "Working hours: " +
+                (workEnd.get(Calendar.HOUR_OF_DAY)-workBegin.get(Calendar.HOUR_OF_DAY));
+
+        return adminInfo;
     }
     
     @Override 
