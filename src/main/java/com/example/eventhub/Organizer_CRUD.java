@@ -1,5 +1,6 @@
 package com.example.eventhub;
 
+import com.jfoenix.assets.JFoenixResources;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXRadioButton;
 import javafx.beans.binding.Bindings;
@@ -229,12 +230,7 @@ public class Organizer_CRUD {
             cateName.setItems(categories);
             TextField Price = new TextField();
             Price.setPromptText("Price");
-            Price.setStyle("-fx-prompt-text-fill: #465058; "
-                            + "-fx-text-inner-color: #fbfcfc; "
-                            + "-fx-font-size: 15px; "
-                            + "-fx-border-radius: 4px; "
-                            + "-fx-background-color: #2A363F; "
-                            + "-fx-border-color: #6ED9A0;");
+
             GridPane field1 = new GridPane();
             field1.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
             field1.translateYProperty().bind(functionality.heightProperty().multiply(0.02));
@@ -317,9 +313,15 @@ public class Organizer_CRUD {
             nightBtn.setDisable(true);
 
             RoomNo.setOnAction(j -> {
-                datePicker.setDisable(false);
+                        datePicker.setDisable(false);
+
+                System.out.println(RoomNo.getValue());
+                Room x = RoomNo.getValue();
+                System.out.println(x.getRoomNo());
+
+                 String[][] availableRooms = x.getAvailableRooms();
                 datePicker.setOnAction(k ->{
-                    String[][] availableRooms = RoomNo.getValue().getAvailableRooms();
+
                     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
                     LocalDate theThing = datePicker.getValue();
                     String date = theThing.format(format);
@@ -338,9 +340,11 @@ public class Organizer_CRUD {
                             break; // Exit after finding the date
                         }
                     }
-                });
 
-            });
+
+                });
+                    });
+
 
 
             pwRoom.getChildren().add(RoomNo);
@@ -410,7 +414,6 @@ public class Organizer_CRUD {
                 name.clear();
                 Price.clear();
                 cateName.setValue(null);
-                RoomNo.setValue(null);
                 timeToggleGroup.selectToggle(null);
                 datePicker.setValue(LocalDate.now());
             });
@@ -442,6 +445,7 @@ public class Organizer_CRUD {
             fieldContainer.setAlignment(Pos.CENTER);
             fieldContainer.setMaxWidth(Double.MAX_VALUE);
             TextField capacity = new TextField();
+            capacity.setPromptText("Capacity");
             capacity.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
 
 

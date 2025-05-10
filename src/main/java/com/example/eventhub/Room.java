@@ -41,8 +41,12 @@ public Room(int capacity) {
     public String toString() {
         return "Room{" + "roomNo=" + roomNo + '}';
     }
-
-
+    @Override
+    public boolean equals(Object o){
+    if (o instanceof Room){
+    return ((Room)o).roomNo == this.roomNo;}
+    else{return false;}
+    }
 
     public int getRoomCost() {
         return roomcost;
