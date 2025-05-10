@@ -105,6 +105,15 @@ public class AdminCRUD {
             VBox.setMargin(CRUDbut, new Insets(ButtonMar, 0, 0, 0));
         });
 
+        JFXButton Searchbut = new JFXButton("Search");
+        Searchbut.setMaxWidth(Double.MAX_VALUE);
+        Searchbut.setStyle(ButStyleA);
+        Searchbut.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
+        ButtonsVbox.heightProperty().addListener((obs, oldPad, newPad) -> {
+            double ButtonMar = ButtonsVbox.getHeight() * 0.025;
+            VBox.setMargin(Searchbut, new Insets(ButtonMar, 0, 0, 0));
+        });
+
 
         JFXButton LogOutBut = new JFXButton("Log out");
         LogOutBut.setMaxWidth(Double.MAX_VALUE);
@@ -118,7 +127,7 @@ public class AdminCRUD {
 
         LogOutBut.setOnAction(e -> sceneManager.switchToLogout(a));
 
-        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut, LogOutBut);
+        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, Searchbut,CRUDbut, LogOutBut);
 
         Line l = new Line();
         l.setStroke(Color.web("#465058"));
