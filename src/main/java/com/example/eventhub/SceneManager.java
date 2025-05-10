@@ -25,6 +25,7 @@ public class SceneManager {
     private Organizer_CRUD organizerCrud;
     private OrganizerShow organizerShow;
     private AttendeeSearch attendeeSearch;
+    private OrganizerSearch organizerSearch;
 
 
 
@@ -70,6 +71,11 @@ public class SceneManager {
     public void switchToOrganizerShow(Organizer organizer){
         organizerShow = new OrganizerShow(organizer, this);
         primaryStage.setScene(organizerShow.getScene());
+    }
+
+    public void switchToOrganizerSearch(Organizer organizer){
+        organizerSearch = new OrganizerSearch(organizer, this);
+        primaryStage.setScene(organizerSearch.getScene());
     }
 
     public void switchToOrganizerCRUD(Organizer organizer){

@@ -19,7 +19,7 @@ public class LogoutController implements FxmlSceneController{
 
         switch (person) {
             case Attendee w -> sceneManager.switchToAttendeeHscreen(w);
-            //case Organizer w -> sceneManager.switchToOrganizerHscreen(w);
+            case Organizer w -> sceneManager.switchToOrganizerHscreen(w);
             case Admin w -> sceneManager.switchToAdminHscreen(w);
             default -> {
                 exit(); // Only exit if absolutely necessary

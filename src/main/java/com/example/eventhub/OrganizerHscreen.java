@@ -52,13 +52,23 @@ public class OrganizerHscreen {
         l2.endYProperty().bind(theLines.heightProperty().multiply(0.3));
         theLines.getChildren().addAll(l1, l2);
 
-        GridPane Buttons = new GridPane();
-        Buttons.prefHeightProperty().bind(HomePageAT.heightProperty().multiply(0.20));
-        Buttons.setVgap(30);
-        Buttons.setHgap(30);
+        GridPane Buttons1 = new GridPane();
+        GridPane Buttons2 = new GridPane();
+
+        Buttons1.prefHeightProperty().bind(HomePageAT.heightProperty().multiply(0.20));
+        Buttons1.setVgap(30);
+        Buttons1.setHgap(30);
         HomePageAT.widthProperty().addListener((obs, oldPad, newPad) -> {
             double ButtonMar = HomePageAT.getWidth() * 0.045;
-            VBox.setMargin(Buttons, new Insets(0, ButtonMar, 0, ButtonMar));
+            VBox.setMargin(Buttons1, new Insets(0, ButtonMar, 0, ButtonMar));
+        });
+
+        Buttons2.prefHeightProperty().bind(HomePageAT.heightProperty().multiply(0.20));
+        Buttons2.setVgap(30);
+        Buttons2.setHgap(30);
+        HomePageAT.widthProperty().addListener((obs, oldPad, newPad) -> {
+            double ButtonMar = HomePageAT.getWidth() * 0.045;
+            VBox.setMargin(Buttons2, new Insets(0, ButtonMar, 0, ButtonMar));
         });
 
         ColumnConstraints colgrid1 = new ColumnConstraints();
@@ -67,7 +77,16 @@ public class OrganizerHscreen {
         colgrid2.setPercentWidth(33);
         ColumnConstraints colgrid3 = new ColumnConstraints();
         colgrid3.setPercentWidth(34);
-        Buttons.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3);
+        ColumnConstraints colgrid4 = new ColumnConstraints();
+        colgrid4.setPercentWidth(17);
+        ColumnConstraints colgrid5 = new ColumnConstraints();
+        colgrid5.setPercentWidth(33);
+        ColumnConstraints colgrid6 = new ColumnConstraints();
+        colgrid6.setPercentWidth(33);
+        ColumnConstraints colgrid7 = new ColumnConstraints();
+        colgrid7.setPercentWidth(17);
+        Buttons1.getColumnConstraints().addAll(colgrid1, colgrid2, colgrid3);
+        Buttons2.getColumnConstraints().addAll(colgrid4,colgrid5,colgrid6,colgrid7);
 
         JFXButton but1 = new JFXButton("Organizer Info");
         but1.setStyle(ButStyleUA);
@@ -94,6 +113,15 @@ public class OrganizerHscreen {
 
         but3.setOnAction(e -> sceneManager.switchToOrganizerCRUD(o));
 
+
+        JFXButton Searchbut = new JFXButton("Search");
+        Searchbut.setStyle(ButStyleUA);
+        GridPane.setHgrow(Searchbut, Priority.ALWAYS);
+        GridPane.setVgrow(Searchbut, Priority.ALWAYS);
+        Searchbut.setMaxWidth(Double.MAX_VALUE);
+
+        Searchbut.setOnAction(e -> sceneManager.switchToOrganizerSearch(o));
+
         JFXButton but4 = new JFXButton("Logout");
         but4.setStyle(ButStyleUA);
         GridPane.setHgrow(but4, Priority.ALWAYS);
@@ -102,12 +130,12 @@ public class OrganizerHscreen {
 
         but4.setOnAction(e -> sceneManager.switchToLogout(o));
 
-        Buttons.add(but1, 0, 0);
-        Buttons.add(but2, 1, 0);
-        Buttons.add(but3, 2, 0);
-        Buttons.add(but4, 1, 1);
-
-        HomePageAT.getChildren().addAll(name, theLines, Buttons);
+        Buttons1.add(but1, 0, 0);
+        Buttons1.add(but2, 1, 0);
+        Buttons1.add(but3, 2, 0);
+        Buttons2.add(Searchbut,1,0);
+        Buttons2.add(but4, 2,0);
+        HomePageAT.getChildren().addAll(name, theLines, Buttons1,Buttons2);
         root = new Scene(HomePageAT, 600, 400);
     }
 

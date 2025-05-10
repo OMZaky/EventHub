@@ -17,8 +17,8 @@ public class Main extends Application {
         Database.people.add(attendee3);
 
         SceneManager sceneManager = new SceneManager(stage);
-        sceneManager.switchToAttendeeSearch(attendee3); // Start with the login scene
-        
+        //sceneManager.switchToAttendeeSearch(attendee3); // Start with the login scene
+        sceneManager.switchToLogin();
         stage.setTitle("APP");
         stage.setWidth(700);
         stage.setHeight(450);

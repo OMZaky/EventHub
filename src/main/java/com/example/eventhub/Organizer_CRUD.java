@@ -58,6 +58,8 @@ public class Organizer_CRUD {
             ButtonsVbox.setPadding(new Insets(ButtonPadding, 0, 0, 0));
         });
 
+        UserInfoBut.setOnAction(e -> sceneManager.switchToOrganizerInfo(organizer));
+
 
         JFXButton ShowBut = new JFXButton("Show Data");
         ShowBut.setMaxWidth(Double.MAX_VALUE);
@@ -67,6 +69,8 @@ public class Organizer_CRUD {
             double ButtonMar = ButtonsVbox.getHeight() * 0.025;
             VBox.setMargin(ShowBut, new Insets(ButtonMar, 0, 0, 0));
         });
+
+        ShowBut.setOnAction( e -> sceneManager.switchToOrganizerShow(organizer));
 
         JFXButton CRUDbut = new JFXButton("CRUD");
         CRUDbut.disableProperty().set(true);
@@ -78,14 +82,18 @@ public class Organizer_CRUD {
             VBox.setMargin(CRUDbut, new Insets(ButtonMar, 0, 0, 0));
         });
 
-        JFXButton Searchbut = new JFXButton("Search");
-        Searchbut.disableProperty().set(true);
-        Searchbut.setStyle(ButStyleUA);
-        GridPane.setHgrow(Searchbut, Priority.ALWAYS);
-        GridPane.setVgrow(Searchbut, Priority.ALWAYS);
-        Searchbut.setMaxWidth(Double.MAX_VALUE);
+        CRUDbut.setOnAction(e -> sceneManager.switchToOrganizerCRUD(organizer));
 
-       // but4.setOnAction(e -> sceneManager.switchToOrganizerSearch(organizer));
+        JFXButton Searchbut = new JFXButton("Search");
+        Searchbut.setMaxWidth(Double.MAX_VALUE);
+        Searchbut.setStyle(ButStyleA);
+        Searchbut.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
+        ButtonsVbox.heightProperty().addListener((obs, oldPad, newPad) -> {
+            double ButtonMar = ButtonsVbox.getHeight() * 0.025;
+            VBox.setMargin(Searchbut, new Insets(ButtonMar, 0, 0, 0));
+        });
+
+       Searchbut.setOnAction(e -> sceneManager.switchToOrganizerSearch(organizer));
 
 
         JFXButton LogOutBut = new JFXButton("Log out");
@@ -97,7 +105,9 @@ public class Organizer_CRUD {
             VBox.setMargin(LogOutBut, new Insets(ButtonMar, 0, 0, 0));
         });
 
-        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut, LogOutBut);
+        LogOutBut.setOnAction(e -> sceneManager.switchToLogout(organizer));
+
+        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut,Searchbut, LogOutBut);
 
         Line l = new Line();
         l.setStroke(Color.web("#465058"));
