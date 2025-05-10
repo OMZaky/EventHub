@@ -224,8 +224,16 @@ public class AdminCRUD {
   
         fieldContainer.setAlignment(Pos.CENTER);
         fieldContainer.setMaxWidth(Double.MAX_VALUE); 
-        TextField capacity = new TextField();
-        capacity.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+        TextField Name = new TextField();
+            Name.setPromptText("Name");
+            Name.setStyle("-fx-prompt-text-fill: #465058; "
+                            + "-fx-text-inner-color: #fbfcfc; "
+                            + "-fx-font-size: 15px; "
+                            + "-fx-border-radius: 4px; "
+                            + "-fx-background-color: #2A363F; "
+                            + "-fx-border-color: #6ED9A0;"
+                    );
+        Name.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
 
         JFXButton confirm = new JFXButton("Confirm");
         confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
@@ -233,15 +241,15 @@ public class AdminCRUD {
         confirm.translateYProperty().bind(functionality.heightProperty().multiply(0.40));
         
         confirm.setDisable(true);
-        confirm.disableProperty().bind(capacity.textProperty().isEmpty());
+        confirm.disableProperty().bind(Name.textProperty().isEmpty());
         
             confirm.setOnAction(z -> {
             pwCap.getChildren().removeIf(node -> node instanceof Label);
-            a.create(capacity.getText(), pwCap);
-            capacity.clear();
+            a.create(Name.getText(), pwCap);
+            Name.clear();
             });
         
-        fieldContainer.getChildren().add(capacity);
+        fieldContainer.getChildren().add(Name);
         pwCap.getChildren().add(fieldContainer);
         cap.getChildren().addAll(pwCap,confirm);
         functionality.getChildren().addAll(cap);
@@ -264,9 +272,18 @@ public class AdminCRUD {
         pwCap.setAlignment(Pos.CENTER);
         HBox fieldContainer = new HBox();
         fieldContainer.setAlignment(Pos.CENTER);
-        fieldContainer.setMaxWidth(Double.MAX_VALUE); 
-        TextField capacity = new TextField();
-        capacity.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+        fieldContainer.setMaxWidth(Double.MAX_VALUE);
+            TextField newName = new TextField();
+            newName.setPromptText("New Name");
+            newName.setStyle("-fx-prompt-text-fill: #465058; "
+                            + "-fx-text-inner-color: #fbfcfc; "
+                            + "-fx-font-size: 15px; "
+                            + "-fx-border-radius: 4px; "
+                            + "-fx-background-color: #2A363F; "
+                            + "-fx-border-color: #6ED9A0;"
+                    );
+
+        newName.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
         
         
         VBox pwCom = new VBox();
@@ -277,6 +294,13 @@ public class AdminCRUD {
         ObservableList<Categories> observableList = FXCollections.observableArrayList(Database.categories);
         
         ComboBox combobox = new ComboBox(observableList);
+
+            combobox.setPromptText("Category");
+            combobox.setStyle(
+                    " -fx-background-color: #2d2d2d;"
+                            +"-fx-border-color: #6ED9A0;"
+                            +"-fx-text-fill: white;"
+                            +"-fx-prompt-text-fill:white;");
         combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
         
         container.getChildren().addAll(pwCap,pwCom);
@@ -287,23 +311,23 @@ public class AdminCRUD {
         confirm.translateYProperty().bind(functionality.heightProperty().multiply(0.40));
         confirm.disableProperty().bind(
             Bindings.createBooleanBinding(() -> 
-                combobox.getValue() == null || capacity.getText().trim().isEmpty(),
+                combobox.getValue() == null || newName.getText().trim().isEmpty(),
 
                 combobox.valueProperty(),
-                capacity.textProperty()
+                newName.textProperty()
             )
         );
             confirm.setOnAction(z -> {
             
             pwCap.getChildren().removeIf(node -> node instanceof Label);
-            a.update(((Categories)combobox.getValue()), capacity.getText(), pwCap,pwCom);
-            capacity.clear();
+            a.update(((Categories)combobox.getValue()), newName.getText(), pwCap,pwCom);
+            newName.clear();
             combobox.setValue(null);
             });
             
             
         combContainer.getChildren().add(combobox);
-        fieldContainer.getChildren().add(capacity);
+        fieldContainer.getChildren().add(newName);
         pwCom.getChildren().add(combContainer);
         pwCap.getChildren().add(fieldContainer);
         cap.getChildren().addAll(container,confirm);
@@ -332,6 +356,12 @@ public class AdminCRUD {
         ObservableList<Categories> observableList = FXCollections.observableArrayList(Database.categories);
         
         ComboBox combobox = new ComboBox(observableList);
+            combobox.setPromptText("Category");
+            combobox.setStyle(
+                    " -fx-background-color: #2d2d2d;"
+                            +"-fx-border-color: #6ED9A0;"
+                            +"-fx-text-fill: white;"
+                            +"-fx-prompt-text-fill: white;");
         combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
         
 
@@ -383,6 +413,12 @@ public class AdminCRUD {
         combContainer.setMaxWidth(Double.MAX_VALUE); 
         ObservableList<Categories> observableList = FXCollections.observableArrayList(Database.categories); 
         ComboBox combobox = new ComboBox(observableList);
+            combobox.setPromptText("Category");
+            combobox.setStyle(
+                    " -fx-background-color: #2d2d2d;"
+                            +"-fx-border-color: #6ED9A0;"
+                            +"-fx-text-fill: white;"
+                            +"-fx-prompt-text-fill:white !important;");
         combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
         
 
@@ -400,7 +436,7 @@ public class AdminCRUD {
             
             pwCom.getChildren().removeIf(node -> node instanceof Label);
             a.delete(((Categories)combobox.getValue()));
-            Label confmes = new Label("sucsess");
+            Label confmes = new Label("success");
             confmes.setStyle(textgood);
             pwCom.getChildren().add(confmes);
             observableList.setAll(Database.categories);
@@ -444,6 +480,14 @@ public class AdminCRUD {
         fieldContainer.setAlignment(Pos.CENTER);
         fieldContainer.setMaxWidth(Double.MAX_VALUE); 
         TextField capacity = new TextField();
+            capacity.setPromptText("Capacity");
+            capacity.setStyle("-fx-prompt-text-fill: #465058; "
+                            + "-fx-text-inner-color: #fbfcfc; "
+                            + "-fx-font-size: 15px; "
+                            + "-fx-border-radius: 4px; "
+                            + "-fx-background-color: #2A363F; "
+                            + "-fx-border-color: #6ED9A0;"
+                    );
         capacity.prefWidthProperty().bind(buttonContainer.widthProperty().multiply(0.25));
 
         JFXButton confirm = new JFXButton("Confirm");
@@ -458,7 +502,7 @@ public class AdminCRUD {
             
             pwCap.getChildren().removeIf(node -> node instanceof Label);
             if(a.addRoom(capacity.getText(), pwCap)){
-            Label confmes = new Label("sucsess");
+            Label confmes = new Label("success");
             confmes.setStyle(textgood);
             pwCap.getChildren().add(confmes);
             }else{
