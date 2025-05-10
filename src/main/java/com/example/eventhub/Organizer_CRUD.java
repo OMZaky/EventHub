@@ -220,7 +220,9 @@ public class Organizer_CRUD {
             pwPrice.setAlignment(Pos.CENTER);
 
             TextField name = new TextField();
-            TextField cateName = new TextField();
+            ObservableList<Categories> categories = FXCollections.observableArrayList(Database.categories);
+            ComboBox<Categories> cateName = new ComboBox();
+            cateName.setItems(categories);
             TextField Price = new TextField();
             GridPane field1 = new GridPane();
             field1.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
@@ -379,14 +381,29 @@ public class Organizer_CRUD {
             confirm.translateYProperty().bind(functionality.heightProperty().multiply(0.40));
 
             confirm.setDisable(true);
-            confirm.disableProperty().bind(name.textProperty().isEmpty());
+            confirm.disableProperty().bind(
+            Bindings.createBooleanBinding(() ->
+                RoomNo.getValue() == null || name.getText().trim().isEmpty() || Price.getText().trim().isEmpty()||cateName.getValue() == null||timeToggleGroup.getSelectedToggle()==null,
+
+                RoomNo.valueProperty(),
+                name.textProperty(),
+                Price.textProperty(),
+                cateName.valueProperty(),
+                timeToggleGroup.selectedToggleProperty()
+            )
+        );
 
             confirm.setOnAction(z -> {
 
                 pwPrice.getChildren().removeIf(node -> node instanceof Label);
-                //a.create(capacity.getText(), pwCap);
+                organizer.create(name.getText(),cateName.getValue(),RoomNo.getValue(),Price.getText(),datePicker.getValue(),((JFXRadioButton)timeToggleGroup.getSelectedToggle()).getText(),pwPrice);
                 timeToggleGroup.selectToggle(null);
                 name.clear();
+                Price.clear();
+                cateName.setValue(null);
+                RoomNo.setValue(null);
+                timeToggleGroup.selectToggle(null);
+                datePicker.setValue(LocalDate.now());
             });
 
             pwName.getChildren().add(name);
@@ -398,8 +415,8 @@ public class Organizer_CRUD {
         });
 
 
-        Buttons.add(but2, 1 ,0);
-        but2.setOnAction(e -> {
+            Buttons.add(but2, 1 ,0);
+            but2.setOnAction(e -> {
             functionality.getChildren().clear();
 
             VBox cap= new VBox();
@@ -424,7 +441,7 @@ public class Organizer_CRUD {
             HBox combContainer = new HBox();
             combContainer.setAlignment(Pos.CENTER);
             combContainer.setMaxWidth(Double.MAX_VALUE);
-            ObservableList<Categories> observableList = FXCollections.observableArrayList(Database.categories);
+            ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
 
             ComboBox combobox = new ComboBox(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
@@ -446,7 +463,7 @@ public class Organizer_CRUD {
             confirm.setOnAction(z -> {
 
                 pwCap.getChildren().removeIf(node -> node instanceof Label);
-                //a.update(((Categories)combobox.getValue()), capacity.getText(), pwCap,pwCom);
+                organizer.update(((Event)combobox.getValue()), capacity.getText(), pwCap,pwCom);
                 capacity.clear();
                 combobox.setValue(null);
             });
@@ -498,10 +515,17 @@ public class Organizer_CRUD {
             confirm.setOnAction(z -> {
 
                 pwCom.getChildren().removeIf(node -> node instanceof Label);
-                Label read = new Label (organizer.read(((Event)combobox.getValue())));
-                read.translateYProperty().bind(functionality.heightProperty().multiply(0.30));
-                read.setStyle(textTable);
-                pwCom.getChildren().add(read);
+                String readvalue = (organizer.read(((Event)combobox.getValue())));
+                String[] readArr = readvalue.split("|");
+                HBox hb = new HBox(5);
+                for (String s : readArr) {
+                    Label newlab = new Label(s);
+                    newlab.setStyle(textNormal);
+                    hb.getChildren().add(newlab);
+                }
+
+            hb.translateYProperty().bind(functionality.heightProperty().multiply(0.30));
+            cap.getChildren().add(hb);
                 combobox.setValue(null);
             });
 

@@ -132,9 +132,9 @@ public class Event implements Cloneable{
 
       @Override
     public String toString() {
-        return "Event Name :" + getName() + "\nEvent Category :" + getCategoryname()
-    + "\nEvent Room :" + this.room.getRoomNo()+ "\nTicket Price :" + getTicketPrice() + 
-      "\nEvent Time :" +this.eventTime.getTime() + "\n";
+        return "Event Name :" + getName() + "\n|Event Category :" + getCategoryname()
+    + "\n|Event Room :" + this.room.getRoomNo()+ "\n|Ticket Price :" + getTicketPrice() +
+      "\n|Event Time :" +this.eventTime.getTime();
     }
     
     

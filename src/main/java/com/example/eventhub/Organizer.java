@@ -9,10 +9,9 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
-public class Organizer extends Person {
+public class Organizer extends Person implements Employee<Event>{
 
-    String textgood = "-fx-font-family:'Century Gothic'; -fx-font-size : 16;-fx-text-fill: #00ff00; ";
-
+    String texterr = "-fx-font-family:'Century Gothic'; -fx-font-size : 16;-fx-text-fill: #FF0000; ";
     private Wallet wallet;
     DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     ArrayList<Event> mine = new ArrayList<>(1000);
@@ -31,23 +30,43 @@ public class Organizer extends Person {
         return (wallet != null) ? wallet.getBalance() : 0;
     }
 
+    @Override
+    public void create(String jack, VBox john) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
-    public void update(Event o, String capacity, VBox pwCap, VBox pwCom){
-        for(Event e : Database.events){
-            if(o == e){
-                Label l = new Label("Change successful");
-                l.setStyle(textgood);
-                pwCap.getChildren().add(l);
-                pwCom.getChildren().add(new Label(""));
-                o.setName(capacity);
-                break;
-            }
+
+    public void create(String name , Categories myCat ,Room myRoom, String price,LocalDate occupation,String State,VBox pwPrice){
+        boolean valid = true;
+        if(!(price.matches("\\d+")) || !((Integer.valueOf(price)>0)) ){
+            Label errormsg1 = new Label ("price must be a positive number");
+            errormsg1.setStyle(texterr);
+            pwPrice.getChildren().add(errormsg1);
+            valid = false;
+        }
+
+        Calendar cal = GregorianCalendar.from(
+                occupation.atStartOfDay(ZoneId.systemDefault())
+        );
+
+        if(valid){
+            Reservations res = new Reservations();
+            this.wallet.pay(this, myRoom);
+            Event eve = new Event(name,myCat,Integer.parseInt(price),cal,myRoom,this,State);
+            Database.events.add(eve);
+            mine.add(eve);
         }
     }
 
-    public String read(Event o){
+
+
+    public String read2(Event o){
         int i =Database.events.indexOf(o);
         return Database.events.get(i).toString();
+    }
+
+    public String read(Event e){
+        return e.toString();
     }
 
     @Override
@@ -74,10 +93,26 @@ public class Organizer extends Person {
         mine.remove(e);
     }
 
+    @Override
+    public void show() {
+
+    }
+
+    public void update(Event o, String newValue , VBox theInputOfTheNewValue,VBox theInputOfTheCategory){
+        for(Event e : Database.events){
+            if(o == e){
+                o.setName(newValue);
+                break;
+            }
+        }
+    }
+
 
     public Wallet getWallet() {
         return this.wallet;
     }
+
+
 
 }
     /*
