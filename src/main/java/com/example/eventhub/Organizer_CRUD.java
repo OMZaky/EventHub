@@ -226,6 +226,13 @@ public class Organizer_CRUD {
             ComboBox<Categories> cateName = new ComboBox<>();
             cateName.setItems(categories);
             TextField Price = new TextField();
+            Price.setPromptText("Price");
+            Price.setStyle("-fx-prompt-text-fill: #465058; "
+                            + "-fx-text-inner-color: #fbfcfc; "
+                            + "-fx-font-size: 15px; "
+                            + "-fx-border-radius: 4px; "
+                            + "-fx-background-color: #2A363F; "
+                            + "-fx-border-color: #6ED9A0;");
             GridPane field1 = new GridPane();
             field1.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
             field1.translateYProperty().bind(functionality.heightProperty().multiply(0.02));
@@ -444,6 +451,11 @@ public class Organizer_CRUD {
 
             ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+                combobox.setStyle(
+                        " -fx-background-color: #2d2d2d;"
+                                +"-fx-border-color: #6ED9A0;"
+                                +"-fx-text-fill: white;"
+                                +"-fx-prompt-text-fill: white ;");
 
             container.getChildren().addAll(pwCap,pwCom);
 
@@ -499,7 +511,11 @@ public class Organizer_CRUD {
 
             ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
-
+            combobox.setStyle(
+                    " -fx-background-color: #2d2d2d;"
+                            +"-fx-border-color: #6ED9A0;"
+                            +"-fx-text-fill: white;"
+                            +"-fx-prompt-text-fill: white ;");
 
             JFXButton confirm = new JFXButton("Confirm");
             confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
@@ -557,7 +573,11 @@ public class Organizer_CRUD {
             ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
             ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
-
+            combobox.setStyle(
+                    " -fx-background-color: #2d2d2d;"
+                            +"-fx-border-color: #6ED9A0;"
+                            +"-fx-text-fill: white;"
+                            +"-fx-prompt-text-fill: white ;");
 
             JFXButton confirm = new JFXButton("Confirm");
             confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));

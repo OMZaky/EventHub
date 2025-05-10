@@ -76,11 +76,15 @@ public class AttendeeSearch {
 
 
         JFXButton but4 = new JFXButton("Search");
-        but4.disableProperty().set(true);
-        but4.setStyle(ButStyleUA);
-        GridPane.setHgrow(but4, Priority.ALWAYS);
-        GridPane.setVgrow(but4, Priority.ALWAYS);
         but4.setMaxWidth(Double.MAX_VALUE);
+        but4.disableProperty().set(true);
+
+        but4.setStyle(ButStyleUA);
+        but4.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
+        ButtonsVbox.heightProperty().addListener((obs,oldPad,newPad)->{
+            double ButtonMar = ButtonsVbox.getHeight()*0.025;
+            VBox.setMargin(but4, new Insets(ButtonMar,0,0,0));
+        });
 
         but4.setOnAction(e -> sceneManager.switchToAttendeeSearch(a));
 
