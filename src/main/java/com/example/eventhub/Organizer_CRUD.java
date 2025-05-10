@@ -177,28 +177,28 @@ public class Organizer_CRUD {
 
         Buttons.getColumnConstraints().addAll(colgrid1, colgrid2 ,colgrid3,colgrid4);
 
-        JFXButton but1 = new JFXButton("Create Cate.");
+        JFXButton but1 = new JFXButton("Create Event");
         but1.setStyle(ButStyleUA);
         GridPane.setHgrow(but1, Priority.ALWAYS);
         GridPane.setVgrow(but1, Priority.ALWAYS);
         but1.setMaxWidth(Double.MAX_VALUE);
 
 
-        JFXButton but2 = new JFXButton("Update Cate.");
+        JFXButton but2 = new JFXButton("Update Event");
         but2.setStyle(ButStyleUA);
         GridPane.setHgrow(but2, Priority.ALWAYS);
         GridPane.setVgrow(but2, Priority.ALWAYS);
         but2.setMaxWidth(Double.MAX_VALUE);
 
 
-        JFXButton but3 = new JFXButton("Read Cate.");
+        JFXButton but3 = new JFXButton("Read Event");
         but3.setStyle(ButStyleUA);
         GridPane.setHgrow(but3, Priority.ALWAYS);
         GridPane.setVgrow(but3, Priority.ALWAYS);
         but3.setMaxWidth(Double.MAX_VALUE);
 
 
-        JFXButton but4 = new JFXButton("Delete Cate.");
+        JFXButton but4 = new JFXButton("Delete Event");
         but4.setStyle(ButStyleUA);
         GridPane.setHgrow(but4, Priority.ALWAYS);
         GridPane.setVgrow(but4, Priority.ALWAYS);
@@ -221,6 +221,8 @@ public class Organizer_CRUD {
             pwPrice.setAlignment(Pos.CENTER);
 
             TextField name = new TextField();
+            name.setPromptText("Name");
+
             ObservableList<Categories> categories = FXCollections.observableArrayList(Database.categories);
             ComboBox<Categories> cateName = new ComboBox<>();
             cateName.setItems(categories);
@@ -315,29 +317,30 @@ public class Organizer_CRUD {
 
             RoomNo.setOnAction(j -> {
                 datePicker.setDisable(false);
+                datePicker.setOnAction(k ->{
+                    String[][] availableRooms = RoomNo.getValue().getAvailableRooms();
+                    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate theThing = datePicker.getValue();
+                    String date = theThing.format(format);
+                    morningBtn.setDisable(false);
+                    nightBtn.setDisable(false);
+                    for (int i = 0; i < availableRooms.length; i++) {
+                        if (date.equals(availableRooms[i][0].substring(0, 10))) {
+                            int indStartA = availableRooms[i][0].indexOf('-') + 2;
+                            int indStartB = availableRooms[i][1].indexOf('-') + 2;
+                            String StateA = availableRooms[i][0].substring(indStartA);
+                            String StateB = availableRooms[i][1].substring(indStartB);
 
-            });
-            datePicker.setOnAction(k ->{
-                String[][] availableRooms = RoomNo.getValue().getAvailableRooms();
-                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                LocalDate theThing = datePicker.getValue();
-                String date = theThing.format(format);
-                morningBtn.setDisable(false);
-                nightBtn.setDisable(false);
-                for (int i = 0; i < availableRooms.length; i++) {
-                    if (date.equals(availableRooms[i][0].substring(0, 10))) {
-                        int indStartA = availableRooms[i][0].indexOf('-') + 2;
-                        int indStartB = availableRooms[i][1].indexOf('-') + 2;
-                        String StateA = availableRooms[i][0].substring(indStartA);
-                        String StateB = availableRooms[i][1].substring(indStartB);
-
-                        // Correct: disable only if occupied
-                        morningBtn.setDisable(StateA.equals("occupied"));
-                        nightBtn.setDisable(StateB.equals("occupied"));
-                        break; // Exit after finding the date
+                            // Correct: disable only if occupied
+                            morningBtn.setDisable(StateA.equals("occupied"));
+                            nightBtn.setDisable(StateB.equals("occupied"));
+                            break; // Exit after finding the date
+                        }
                     }
-                }
+                });
+
             });
+
 
             pwRoom.getChildren().add(RoomNo);
             pwDate.getChildren().add(datePicker);
@@ -450,11 +453,9 @@ public class Organizer_CRUD {
 
             ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
-                combobox.setStyle(
-                        " -fx-background-color: #2d2d2d;"
-                                +"-fx-border-color: #6ED9A0;"
-                                +"-fx-text-fill: white;"
-                                +"-fx-prompt-text-fill: white ;");
+
+
+
 
             container.getChildren().addAll(pwCap,pwCom);
 
@@ -510,11 +511,7 @@ public class Organizer_CRUD {
 
             ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
-            combobox.setStyle(
-                    " -fx-background-color: #2d2d2d;"
-                            +"-fx-border-color: #6ED9A0;"
-                            +"-fx-text-fill: white;"
-                            +"-fx-prompt-text-fill: white ;");
+
 
             JFXButton confirm = new JFXButton("Confirm");
             confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
@@ -572,11 +569,7 @@ public class Organizer_CRUD {
             ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
             ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
-            combobox.setStyle(
-                    " -fx-background-color: #2d2d2d;"
-                            +"-fx-border-color: #6ED9A0;"
-                            +"-fx-text-fill: white;"
-                            +"-fx-prompt-text-fill: white ;");
+
 
             JFXButton confirm = new JFXButton("Confirm");
             confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
