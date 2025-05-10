@@ -68,6 +68,7 @@ public class Organizer_CRUD {
             ButtonsVbox.setPadding(new Insets(ButtonPadding, 0, 0, 0));
         });
 
+        UserInfoBut.setOnAction(e -> sceneManager.switchToOrganizerInfo(organizer));
 
         JFXButton ShowBut = new JFXButton("Show Data");
         ShowBut.setMaxWidth(Double.MAX_VALUE);
