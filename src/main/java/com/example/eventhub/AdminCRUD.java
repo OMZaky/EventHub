@@ -317,7 +317,7 @@ public class AdminCRUD {
         but3.setOnAction(e -> {
         functionality.getChildren().clear();
         
-        VBox cap= new VBox();
+        VBox cap = new VBox();
         cap.prefWidthProperty().bind(functionality.widthProperty());
         cap.setAlignment(Pos.CENTER);
         
