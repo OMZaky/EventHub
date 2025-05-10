@@ -23,12 +23,13 @@ public class Attendee extends Person {
     }
 
 
-    Attendee(Wallet wallet, Gender gender, String address, ArrayList<String> interests, String username, String password, int yearOfBirth, int monthOfBirth, int dayOfBirth) {
+    Attendee(Wallet wallet, Gender gender, String address, ArrayList<String> interests, String username, String password, int yearOfBirth, int monthOfBirth, int dayOfBirth, boolean register) {
         super(username, password, yearOfBirth, monthOfBirth, dayOfBirth);
         this.wallet = wallet;
         this.address = address;
         this.gender = gender;
         this.interests = interests;
+        if(register) Database.people.add(this);
     }
 
     public String getAddress() {

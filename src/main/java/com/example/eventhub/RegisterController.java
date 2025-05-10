@@ -164,7 +164,8 @@ public class RegisterController implements FxmlSceneController {
                     password.getText(),
                     DOB.getValue().getYear(),
                     DOB.getValue().getMonthValue(),
-                    DOB.getValue().getDayOfMonth()
+                    DOB.getValue().getDayOfMonth(),
+                    true
             );
 
             sceneManager.switchToAttendeeHscreen(attendee);
