@@ -54,7 +54,7 @@ public class Main extends Application {
          Categories Birthday = new Categories("Birthday Party", null);
          Categories Conference = new Categories("Conference", null);
 
-         Organizer organizer1 = new Organizer("Maged", "MyPassword", 3, 3, 2000, 50000);
+         Organizer organizer1 = new Organizer("Maged", "123", 3, 3, 2000, 50000);
          Organizer organizer2 = new Organizer("Farah", "123", 4, 4, 2000, 40000);
          Organizer organizer3 = new Organizer("Sarah", "MyPassword", 6, 6, 2000, 30000);
 

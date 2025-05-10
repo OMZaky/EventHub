@@ -37,6 +37,13 @@ public Room(int capacity) {
         return roomNo;
     }
 
+    @Override
+    public String toString() {
+        return "Room{" + "roomNo=" + roomNo + '}';
+    }
+
+
+
     public int getRoomCost() {
         return roomcost;
     }

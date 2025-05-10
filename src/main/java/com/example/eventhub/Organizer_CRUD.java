@@ -26,6 +26,8 @@ public class Organizer_CRUD {
 
     public Organizer_CRUD(Organizer organizer, SceneManager sceneManager){
 
+        this.organizer = organizer;
+
         String styleBg = "-fx-background-color: #2A363F;";
         String ButStyleUA = "-fx-background-color:#6ED9A0; -fx-text-fill: white;";
         String ButStyleA = "-fx-background-color:#2A363F; -fx-text-fill: white;";
@@ -221,7 +223,7 @@ public class Organizer_CRUD {
 
             TextField name = new TextField();
             ObservableList<Categories> categories = FXCollections.observableArrayList(Database.categories);
-            ComboBox<Categories> cateName = new ComboBox();
+            ComboBox<Categories> cateName = new ComboBox<>();
             cateName.setItems(categories);
             TextField Price = new TextField();
             GridPane field1 = new GridPane();
@@ -273,7 +275,7 @@ public class Organizer_CRUD {
             pwState.setAlignment(Pos.CENTER);
 
             ObservableList<Room> rooms = FXCollections.observableArrayList(Database.rooms);
-            ComboBox<Room> RoomNo = new ComboBox();
+            ComboBox<Room> RoomNo = new ComboBox<>();
             RoomNo.setItems(rooms);
 
             DatePicker datePicker = new DatePicker();
@@ -291,8 +293,8 @@ public class Organizer_CRUD {
 
 
             ToggleGroup timeToggleGroup = new ToggleGroup();
-            JFXRadioButton morningBtn = new JFXRadioButton("morning");
-            JFXRadioButton nightBtn = new JFXRadioButton("night");
+            JFXRadioButton morningBtn = new JFXRadioButton("Morning");
+            JFXRadioButton nightBtn = new JFXRadioButton("Night");
             morningBtn.setToggleGroup(timeToggleGroup);
             nightBtn.setToggleGroup(timeToggleGroup);
             morningBtn.setStyle(textNormal);
@@ -307,31 +309,29 @@ public class Organizer_CRUD {
 
             RoomNo.setOnAction(j -> {
                 datePicker.setDisable(false);
-                datePicker.setOnAction(k ->{
-                    String[][] availableRooms = RoomNo.getValue().getAvailableRooms();
 
-                    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                    LocalDate theThing = datePicker.getValue();
-                    String date = theThing.format(format);
-                    nightBtn.setDisable(false);
-                    nightBtn.setDisable(false);
-                    for (int i = 0; i < 15; i++) {
-                        if(date.equals(availableRooms[i][0].substring(0, 10))){
-                            int indStartA= (availableRooms[i][0].indexOf('-')+2);
-                            int indStartb= (availableRooms[i][1].indexOf('-')+2);
-                            String StateA = availableRooms[i][0].substring(indStartA,availableRooms[i][0].length());
-                            String StateB = availableRooms[i][1].substring(indStartb,availableRooms[i][1].length());
-                            if(!StateA.equals("occupied")){
-                                morningBtn.setDisable(true);
-                            }
-                            if(!StateB.equals("occupied")){
-                                nightBtn.setDisable(true);
-                            }
-                        }
-                    }
-                });
             });
+            datePicker.setOnAction(k ->{
+                String[][] availableRooms = RoomNo.getValue().getAvailableRooms();
+                DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                LocalDate theThing = datePicker.getValue();
+                String date = theThing.format(format);
+                morningBtn.setDisable(false);
+                nightBtn.setDisable(false);
+                for (int i = 0; i < availableRooms.length; i++) {
+                    if (date.equals(availableRooms[i][0].substring(0, 10))) {
+                        int indStartA = availableRooms[i][0].indexOf('-') + 2;
+                        int indStartB = availableRooms[i][1].indexOf('-') + 2;
+                        String StateA = availableRooms[i][0].substring(indStartA);
+                        String StateB = availableRooms[i][1].substring(indStartB);
 
+                        // Correct: disable only if occupied
+                        morningBtn.setDisable(StateA.equals("occupied"));
+                        nightBtn.setDisable(StateB.equals("occupied"));
+                        break; // Exit after finding the date
+                    }
+                }
+            });
 
             pwRoom.getChildren().add(RoomNo);
             pwDate.getChildren().add(datePicker);
@@ -340,7 +340,6 @@ public class Organizer_CRUD {
             GridPane field2 = new GridPane();
             field2.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
             field2.translateYProperty().bind(functionality.heightProperty().multiply(0.1));
-            field2.setGridLinesVisible(true);
 
             field2.setVgap(10);
             field2.setHgap(10);
@@ -443,7 +442,7 @@ public class Organizer_CRUD {
             combContainer.setMaxWidth(Double.MAX_VALUE);
             ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
 
-            ComboBox combobox = new ComboBox(observableList);
+            ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
 
             container.getChildren().addAll(pwCap,pwCom);
@@ -498,7 +497,7 @@ public class Organizer_CRUD {
             combContainer.setMaxWidth(Double.MAX_VALUE);
             ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
 
-            ComboBox combobox = new ComboBox(observableList);
+            ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
 
 
@@ -516,7 +515,7 @@ public class Organizer_CRUD {
 
                 pwCom.getChildren().removeIf(node -> node instanceof Label);
                 String readvalue = (organizer.read(((Event)combobox.getValue())));
-                String[] readArr = readvalue.split("|");
+                String[] readArr = readvalue.split("\\|");
                 HBox hb = new HBox(5);
                 for (String s : readArr) {
                     Label newlab = new Label(s);
@@ -556,7 +555,7 @@ public class Organizer_CRUD {
             combContainer.setAlignment(Pos.CENTER);
             combContainer.setMaxWidth(Double.MAX_VALUE);
             ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
-            ComboBox combobox = new ComboBox(observableList);
+            ComboBox<Event> combobox = new ComboBox<>(observableList);
             combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
 
 
@@ -595,7 +594,7 @@ public class Organizer_CRUD {
         crudMain.getChildren().addAll(crudnamelocate,Buttons,stackFunctionality);
 
         BorPane.setCenter(crudMain);
-        Scene root = new Scene(BorPane, 600, 400);
+        root = new Scene(BorPane, 600, 400);
 
 
     }
