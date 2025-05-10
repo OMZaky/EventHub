@@ -93,9 +93,8 @@ public class Organizer_CRUD {
         CRUDbut.setOnAction(e -> sceneManager.switchToOrganizerCRUD(organizer));
 
         JFXButton Searchbut = new JFXButton("Search");
-        Searchbut.disableProperty().set(true);
         Searchbut.setMaxWidth(Double.MAX_VALUE);
-        Searchbut.setStyle(ButStyleUA);
+        Searchbut.setStyle(ButStyleA);
         Searchbut.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
         ButtonsVbox.heightProperty().addListener((obs, oldPad, newPad) -> {
             double ButtonMar = ButtonsVbox.getHeight() * 0.025;
@@ -116,7 +115,7 @@ public class Organizer_CRUD {
 
         LogOutBut.setOnAction(e -> sceneManager.switchToLogout(organizer));
 
-        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut, LogOutBut);
+        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut,Searchbut, LogOutBut);
 
         Line l = new Line();
         l.setStroke(Color.web("#465058"));
