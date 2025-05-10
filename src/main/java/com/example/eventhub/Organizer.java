@@ -45,8 +45,9 @@ public class Organizer extends Person {
         }
     }
 
-    public void read(Event e){
-        System.out.println(e.toString());
+    public String read(Event o){
+        int i =Database.events.indexOf(o);
+        return Database.events.get(i).toString();
     }
 
     @Override

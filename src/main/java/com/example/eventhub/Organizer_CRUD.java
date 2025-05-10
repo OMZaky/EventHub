@@ -1,13 +1,20 @@
 package com.example.eventhub;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXRadioButton;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Organizer_CRUD {
     private Organizer organizer;
@@ -19,12 +26,13 @@ public class Organizer_CRUD {
 
     public Organizer_CRUD(Organizer organizer, SceneManager sceneManager){
 
-        this.organizer = organizer;
         String styleBg = "-fx-background-color: #2A363F;";
         String ButStyleUA = "-fx-background-color:#6ED9A0; -fx-text-fill: white;";
         String ButStyleA = "-fx-background-color:#2A363F; -fx-text-fill: white;";
         String textHeader = "-fx-font-family:'Century Gothic'; -fx-font-size : 25;-fx-text-fill: #ffffff;";
         String textNormal = "-fx-font-family:'Century Gothic'; -fx-font-size : 16;-fx-text-fill: #ffffff; ";
+        String texterr = "-fx-font-family:'Century Gothic'; -fx-font-size : 16;-fx-text-fill: #FF0000; ";
+        String textgood = "-fx-font-family:'Century Gothic'; -fx-font-size : 16;-fx-text-fill: #00ff00; ";
         String textTable = "-fx-font-family:'Century Gothic'; -fx-font-size : 18;-fx-text-fill: #ffffff; ";
 
         BorderPane BorPane = new BorderPane();
@@ -58,8 +66,6 @@ public class Organizer_CRUD {
             ButtonsVbox.setPadding(new Insets(ButtonPadding, 0, 0, 0));
         });
 
-        UserInfoBut.setOnAction(e -> sceneManager.switchToOrganizerInfo(organizer));
-
 
         JFXButton ShowBut = new JFXButton("Show Data");
         ShowBut.setMaxWidth(Double.MAX_VALUE);
@@ -70,7 +76,7 @@ public class Organizer_CRUD {
             VBox.setMargin(ShowBut, new Insets(ButtonMar, 0, 0, 0));
         });
 
-        ShowBut.setOnAction( e -> sceneManager.switchToOrganizerShow(organizer));
+        ShowBut.setOnAction(e -> sceneManager.switchToOrganizerShow(organizer));
 
         JFXButton CRUDbut = new JFXButton("CRUD");
         CRUDbut.disableProperty().set(true);
@@ -85,15 +91,16 @@ public class Organizer_CRUD {
         CRUDbut.setOnAction(e -> sceneManager.switchToOrganizerCRUD(organizer));
 
         JFXButton Searchbut = new JFXButton("Search");
+        Searchbut.disableProperty().set(true);
         Searchbut.setMaxWidth(Double.MAX_VALUE);
-        Searchbut.setStyle(ButStyleA);
+        Searchbut.setStyle(ButStyleUA);
         Searchbut.prefWidthProperty().bind(BorPane.widthProperty().multiply(0.175));
         ButtonsVbox.heightProperty().addListener((obs, oldPad, newPad) -> {
             double ButtonMar = ButtonsVbox.getHeight() * 0.025;
             VBox.setMargin(Searchbut, new Insets(ButtonMar, 0, 0, 0));
         });
 
-       Searchbut.setOnAction(e -> sceneManager.switchToOrganizerSearch(organizer));
+        Searchbut.setOnAction(e -> sceneManager.switchToOrganizerSearch(organizer));
 
 
         JFXButton LogOutBut = new JFXButton("Log out");
@@ -107,7 +114,7 @@ public class Organizer_CRUD {
 
         LogOutBut.setOnAction(e -> sceneManager.switchToLogout(organizer));
 
-        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut,Searchbut, LogOutBut);
+        ButtonsVbox.getChildren().addAll(UserInfoBut, ShowBut, CRUDbut, LogOutBut);
 
         Line l = new Line();
         l.setStroke(Color.web("#465058"));
@@ -136,15 +143,15 @@ public class Organizer_CRUD {
         CRUD.setStyle(textHeader);
         crudnamelocate.getChildren().add(CRUD);
 
+        StackPane stackFunctionality = new StackPane();
         Pane functionality = new Pane();
+        stackFunctionality.getChildren().add(functionality);
         functionality.prefWidthProperty().bind(crudMain.widthProperty());
         functionality.prefHeightProperty().bind(crudMain.heightProperty().multiply(0.44));
         crudMain.heightProperty().addListener((obs, oldPad, newPad) -> {
             double pane = crudMain.getHeight()* 0.05;
             VBox.setMargin(crudnamelocate, new Insets(pane, 0, 0, 0));
         });
-        functionality.setStyle("-fx-background-color:#ffffff;");
-
 
         GridPane Buttons = new GridPane();
         Buttons.prefHeightProperty().bind(crudMain.heightProperty().multiply(0.20));
@@ -176,14 +183,14 @@ public class Organizer_CRUD {
         but1.setMaxWidth(Double.MAX_VALUE);
 
 
-        JFXButton but2 = new JFXButton("Read Cate.");
+        JFXButton but2 = new JFXButton("Update Cate.");
         but2.setStyle(ButStyleUA);
         GridPane.setHgrow(but2, Priority.ALWAYS);
         GridPane.setVgrow(but2, Priority.ALWAYS);
         but2.setMaxWidth(Double.MAX_VALUE);
 
 
-        JFXButton but3 = new JFXButton("Update Cate.");
+        JFXButton but3 = new JFXButton("Read Cate.");
         but3.setStyle(ButStyleUA);
         GridPane.setHgrow(but3, Priority.ALWAYS);
         GridPane.setVgrow(but3, Priority.ALWAYS);
@@ -197,32 +204,374 @@ public class Organizer_CRUD {
         but4.setMaxWidth(Double.MAX_VALUE);
 
         Buttons.add(but1, 0 ,0);
-        Buttons.add(but2, 1 ,0);
-        Buttons.add(but3, 2 ,0);
-        Buttons.add(but4, 3 ,0);
 
-        VBox Room = new VBox();
-        Room.setAlignment(Pos.TOP_CENTER);
+        but1.setOnAction(e -> {
+            functionality.getChildren().clear();
 
-        JFXButton createroom = new JFXButton("Create Room");
-        createroom.prefWidthProperty().bind(Room.widthProperty().multiply(0.25));
-        createroom.setStyle(ButStyleUA);
-        crudMain.heightProperty().addListener((obs, oldPad, newPad) -> {
-            double pane = crudMain.getHeight()* 0.05;
-            VBox.setMargin(Room, new Insets(pane, 0, 0, 0));
+            VBox cap= new VBox();
+            cap.prefWidthProperty().bind(functionality.widthProperty().multiply(0.98));
+            cap.setAlignment(Pos.CENTER);
+
+            VBox pwName = new VBox();
+            pwName.setAlignment(Pos.CENTER);
+            VBox pwCat = new VBox();
+            pwCat.setAlignment(Pos.CENTER);
+            VBox pwPrice = new VBox();
+            pwPrice.setAlignment(Pos.CENTER);
+
+            TextField name = new TextField();
+            TextField cateName = new TextField();
+            TextField Price = new TextField();
+            GridPane field1 = new GridPane();
+            field1.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+            field1.translateYProperty().bind(functionality.heightProperty().multiply(0.02));
+
+
+            field1.setVgap(10);
+            field1.setHgap(10);
+
+            crudMain.widthProperty().addListener((obs,oldPad,newPad)->{
+                double ButtonMar = crudMain.getWidth()*0.02;
+                VBox.setMargin(field1, new Insets(0,ButtonMar,0,ButtonMar));
+            });
+
+            ColumnConstraints colgridtxt1 = new ColumnConstraints();
+            colgridtxt1.setPercentWidth(33);
+
+            ColumnConstraints colgridtxt2 = new ColumnConstraints();
+            colgridtxt2.setPercentWidth(33);
+
+            ColumnConstraints colgridtxt3 = new ColumnConstraints();
+            colgridtxt3.setPercentWidth(34);
+            field1.getColumnConstraints().addAll(colgridtxt1, colgridtxt2 ,colgridtxt3);
+
+            field1.add(pwName, 0 ,0);
+            pwName.setPrefWidth(200);
+            pwName.setFillWidth(true);
+            GridPane.setHgrow(pwName, Priority.ALWAYS);
+            field1.add(pwCat, 1 ,0);
+            pwCat.setPrefWidth(200);
+            pwCat.setFillWidth(true);
+            GridPane.setHgrow(pwCat, Priority.ALWAYS);
+            field1.add(pwPrice, 2 ,0);
+            pwPrice.setPrefWidth(200);
+            pwPrice.setFillWidth(true);
+            GridPane.setHgrow(pwPrice, Priority.ALWAYS);
+
+            functionality.getChildren().clear();
+
+            cap.prefWidthProperty().bind(functionality.widthProperty().multiply(0.98));
+            cap.setAlignment(Pos.CENTER);
+
+            VBox pwRoom = new VBox();
+            pwRoom.setAlignment(Pos.CENTER);
+            VBox pwDate = new VBox();
+            pwDate.setAlignment(Pos.CENTER);
+            VBox pwState = new VBox();
+            pwState.setAlignment(Pos.CENTER);
+
+            ObservableList<Room> rooms = FXCollections.observableArrayList(Database.rooms);
+            ComboBox<Room> RoomNo = new ComboBox();
+            RoomNo.setItems(rooms);
+
+            DatePicker datePicker = new DatePicker();
+
+
+            datePicker.setValue(LocalDate.now()); // Set default to today
+            datePicker.setDayCellFactory(picker -> new DateCell() {
+                @Override
+                public void updateItem(LocalDate date, boolean empty) {
+                    super.updateItem(date, empty);
+                    setDisable(date.isBefore(LocalDate.now().plusDays(3)) ||
+                            date.isAfter(LocalDate.now().plusDays(17)));
+                }
+            });
+
+
+            ToggleGroup timeToggleGroup = new ToggleGroup();
+            JFXRadioButton morningBtn = new JFXRadioButton("morning");
+            JFXRadioButton nightBtn = new JFXRadioButton("night");
+            morningBtn.setToggleGroup(timeToggleGroup);
+            nightBtn.setToggleGroup(timeToggleGroup);
+            morningBtn.setStyle(textNormal);
+            nightBtn.setStyle(textNormal);
+            VBox radio = new VBox(10);
+            radio.getChildren().addAll(morningBtn,nightBtn);
+
+
+            datePicker.setDisable(true);
+            morningBtn.setDisable(true);
+            nightBtn.setDisable(true);
+
+            RoomNo.setOnAction(j -> {
+                datePicker.setDisable(false);
+                datePicker.setOnAction(k ->{
+                    String[][] availableRooms = RoomNo.getValue().getAvailableRooms();
+
+                    DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    LocalDate theThing = datePicker.getValue();
+                    String date = theThing.format(format);
+                    nightBtn.setDisable(false);
+                    nightBtn.setDisable(false);
+                    for (int i = 0; i < 15; i++) {
+                        if(date.equals(availableRooms[i][0].substring(0, 10))){
+                            int indStartA= (availableRooms[i][0].indexOf('-')+2);
+                            int indStartb= (availableRooms[i][1].indexOf('-')+2);
+                            String StateA = availableRooms[i][0].substring(indStartA,availableRooms[i][0].length());
+                            String StateB = availableRooms[i][1].substring(indStartb,availableRooms[i][1].length());
+                            if(!StateA.equals("occupied")){
+                                morningBtn.setDisable(true);
+                            }
+                            if(!StateB.equals("occupied")){
+                                nightBtn.setDisable(true);
+                            }
+                        }
+                    }
+                });
+            });
+
+
+            pwRoom.getChildren().add(RoomNo);
+            pwDate.getChildren().add(datePicker);
+            pwState.getChildren().add(radio);
+
+            GridPane field2 = new GridPane();
+            field2.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+            field2.translateYProperty().bind(functionality.heightProperty().multiply(0.1));
+            field2.setGridLinesVisible(true);
+
+            field2.setVgap(10);
+            field2.setHgap(10);
+
+            crudMain.widthProperty().addListener((obs,oldPad,newPad)->{
+                double ButtonMar = crudMain.getWidth()*0.1;
+                VBox.setMargin(field2, new Insets(0,ButtonMar,0,ButtonMar));
+            });
+
+            ColumnConstraints colgridtxt11 = new ColumnConstraints();
+            colgridtxt11.setPercentWidth(33);
+
+            ColumnConstraints colgridtxt22 = new ColumnConstraints();
+            colgridtxt22.setPercentWidth(33);
+
+            ColumnConstraints colgridtxt33 = new ColumnConstraints();
+            colgridtxt33.setPercentWidth(34);
+            field2.getColumnConstraints().addAll(colgridtxt11, colgridtxt22 ,colgridtxt33);
+
+
+            field2.add(pwRoom, 0 ,0);
+            pwRoom.setPrefWidth(400);
+            RoomNo.prefWidthProperty().bind(pwRoom.widthProperty());
+            pwRoom.setFillWidth(true);
+            GridPane.setHgrow(pwRoom, Priority.ALWAYS);
+            field2.add(pwDate, 1 ,0);
+        pwDate.setPrefWidth(200);
+        pwDate.setFillWidth(true);
+            GridPane.setHgrow(pwDate, Priority.ALWAYS);
+            field2.add(pwState, 2 ,0);
+        pwState.setPrefWidth(200);
+        pwState.setFillWidth(true);
+            GridPane.setHgrow(pwState, Priority.ALWAYS);
+
+            JFXButton confirm = new JFXButton("Confirm");
+            confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
+            confirm.setStyle(ButStyleUA);
+            confirm.translateYProperty().bind(functionality.heightProperty().multiply(0.40));
+
+            confirm.setDisable(true);
+            confirm.disableProperty().bind(name.textProperty().isEmpty());
+
+            confirm.setOnAction(z -> {
+
+                pwPrice.getChildren().removeIf(node -> node instanceof Label);
+                //a.create(capacity.getText(), pwCap);
+                timeToggleGroup.selectToggle(null);
+                name.clear();
+            });
+
+            pwName.getChildren().add(name);
+            pwCat.getChildren().add(cateName);
+            pwPrice.getChildren().add(Price);
+
+            cap.getChildren().addAll(field1,field2,confirm);
+            functionality.getChildren().addAll(cap);
         });
 
 
-        Label shitman  = new Label("my name is omar akram");
-        shitman.setStyle(textTable);
-        Room.getChildren().addAll(createroom,shitman);
+        Buttons.add(but2, 1 ,0);
+        but2.setOnAction(e -> {
+            functionality.getChildren().clear();
+
+            VBox cap= new VBox();
+            cap.prefWidthProperty().bind(functionality.widthProperty());
+            cap.setAlignment(Pos.CENTER);
+
+            HBox container = new HBox(10);
+            container.setAlignment(Pos.CENTER);
+            container.translateYProperty().bind(functionality.heightProperty().multiply(0.250));
+
+            VBox pwCap = new VBox();
+            pwCap.setAlignment(Pos.CENTER);
+            HBox fieldContainer = new HBox();
+            fieldContainer.setAlignment(Pos.CENTER);
+            fieldContainer.setMaxWidth(Double.MAX_VALUE);
+            TextField capacity = new TextField();
+            capacity.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+
+
+            VBox pwCom = new VBox();
+            pwCom.setAlignment(Pos.CENTER);
+            HBox combContainer = new HBox();
+            combContainer.setAlignment(Pos.CENTER);
+            combContainer.setMaxWidth(Double.MAX_VALUE);
+            ObservableList<Categories> observableList = FXCollections.observableArrayList(Database.categories);
+
+            ComboBox combobox = new ComboBox(observableList);
+            combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+
+            container.getChildren().addAll(pwCap,pwCom);
+
+            JFXButton confirm = new JFXButton("Confirm");
+            confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
+            confirm.setStyle(ButStyleUA);
+            confirm.translateYProperty().bind(functionality.heightProperty().multiply(0.40));
+            confirm.disableProperty().bind(
+                    Bindings.createBooleanBinding(() ->
+                                    combobox.getValue() == null || capacity.getText().trim().isEmpty(),
+
+                            combobox.valueProperty(),
+                            capacity.textProperty()
+                    )
+            );
+            confirm.setOnAction(z -> {
+
+                pwCap.getChildren().removeIf(node -> node instanceof Label);
+                //a.update(((Categories)combobox.getValue()), capacity.getText(), pwCap,pwCom);
+                capacity.clear();
+                combobox.setValue(null);
+            });
+
+
+            combContainer.getChildren().add(combobox);
+            fieldContainer.getChildren().add(capacity);
+            pwCom.getChildren().add(combContainer);
+            pwCap.getChildren().add(fieldContainer);
+            cap.getChildren().addAll(container,confirm);
+            functionality.getChildren().addAll(cap);
+        });
 
 
 
-        crudMain.getChildren().addAll(crudnamelocate,Buttons,functionality,Room);
+        Buttons.add(but3, 2 ,0);
+
+        but3.setOnAction(e -> {
+            functionality.getChildren().clear();
+
+            VBox cap= new VBox();
+            cap.prefWidthProperty().bind(functionality.widthProperty());
+            cap.setAlignment(Pos.CENTER);
+
+            VBox pwCom = new VBox();
+            pwCom.setAlignment(Pos.CENTER);
+            HBox combContainer = new HBox();
+            combContainer.translateYProperty().bind(functionality.heightProperty().multiply(0.250));
+            pwCom.translateYProperty().bind(functionality.heightProperty().multiply(0.250));
+
+            combContainer.setAlignment(Pos.CENTER);
+            combContainer.setMaxWidth(Double.MAX_VALUE);
+            ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
+
+            ComboBox combobox = new ComboBox(observableList);
+            combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+
+
+            JFXButton confirm = new JFXButton("Confirm");
+            confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
+            confirm.setStyle(ButStyleUA);
+            confirm.translateYProperty().bind(functionality.heightProperty().multiply(0.40));
+
+            confirm.setDisable(true);
+            confirm.disableProperty().bind(Bindings.isNull(combobox.valueProperty()));
+
+
+
+            confirm.setOnAction(z -> {
+
+                pwCom.getChildren().removeIf(node -> node instanceof Label);
+                Label read = new Label (organizer.read(((Event)combobox.getValue())));
+                read.translateYProperty().bind(functionality.heightProperty().multiply(0.30));
+                read.setStyle(textTable);
+                pwCom.getChildren().add(read);
+                combobox.setValue(null);
+            });
+
+            combContainer.getChildren().add(combobox);
+            pwCom.getChildren().add(combobox);
+
+            cap.getChildren().addAll(pwCom,confirm);
+
+            functionality.getChildren().addAll(cap);
+        });
+
+
+        Buttons.add(but4, 3 ,0);
+
+        but4.setOnAction(e -> {
+            functionality.getChildren().clear();
+
+            VBox cap= new VBox();
+            cap.prefWidthProperty().bind(functionality.widthProperty());
+            cap.setAlignment(Pos.CENTER);
+
+            VBox pwCom = new VBox();
+            pwCom.translateYProperty().bind(functionality.heightProperty().multiply(0.250));
+
+            pwCom.setAlignment(Pos.CENTER);
+            HBox combContainer = new HBox();
+            combContainer.translateYProperty().bind(functionality.heightProperty().multiply(0.250));
+            combContainer.setAlignment(Pos.CENTER);
+            combContainer.setMaxWidth(Double.MAX_VALUE);
+            ObservableList<Event> observableList = FXCollections.observableArrayList(Database.events);
+            ComboBox combobox = new ComboBox(observableList);
+            combobox.prefWidthProperty().bind(functionality.widthProperty().multiply(0.25));
+
+
+            JFXButton confirm = new JFXButton("Confirm");
+            confirm.prefWidthProperty().bind(functionality.widthProperty().multiply(0.15));
+            confirm.setStyle(ButStyleUA);
+            confirm.translateYProperty().bind(functionality.heightProperty().multiply(0.40));
+
+            confirm.setDisable(true);
+            confirm.disableProperty().bind(Bindings.isNull(combobox.valueProperty()));
+
+
+
+            confirm.setOnAction(z -> {
+
+                pwCom.getChildren().removeIf(node -> node instanceof Label);
+                organizer.delete(((Event)combobox.getValue()));
+                Label confmes = new Label("success");
+                confmes.setStyle(textgood);
+                pwCom.getChildren().add(confmes);
+                observableList.setAll(Database.events);
+                combobox.setValue(null);
+            });
+
+            combContainer.getChildren().add(combobox);
+            pwCom.getChildren().add(combobox);
+
+            cap.getChildren().addAll(pwCom,confirm);
+
+            functionality.getChildren().addAll(cap);
+        });
+
+
+
+
+        crudMain.getChildren().addAll(crudnamelocate,Buttons,stackFunctionality);
 
         BorPane.setCenter(crudMain);
-        root = new Scene(BorPane, 600, 400);
+        Scene root = new Scene(BorPane, 600, 400);
 
 
     }
