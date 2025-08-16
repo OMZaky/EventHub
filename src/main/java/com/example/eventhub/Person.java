@@ -127,6 +127,7 @@ public abstract class Person {
 
             PasswordCheck(foundUser , password, pwPassword);
             if (foundUser.loggedIn) {
+                foundUser.loggedIn = false;
                 return foundUser;
             }else return null;
 
