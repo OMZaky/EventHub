@@ -130,7 +130,7 @@ public class AttendeeSearch {
         textgrid.prefHeightProperty().bind(totalSituation.heightProperty().multiply(0.07));
 
 
-        Label theLabel = new Label("Enter Person's Name");
+        Label theLabel = new Label("Enter Event's Name");
         theLabel.setStyle(textHeader);
 
         LabelStack.getChildren().add(theLabel);
