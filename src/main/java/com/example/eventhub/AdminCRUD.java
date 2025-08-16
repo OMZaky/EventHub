@@ -105,6 +105,8 @@ public class AdminCRUD {
             VBox.setMargin(CRUDbut, new Insets(ButtonMar, 0, 0, 0));
         });
 
+        CRUDbut.setOnAction(e -> sceneManager.switchToAdminCRUD(a));
+
         JFXButton Searchbut = new JFXButton("Search");
         Searchbut.setMaxWidth(Double.MAX_VALUE);
         Searchbut.setStyle(ButStyleA);
@@ -114,6 +116,7 @@ public class AdminCRUD {
             VBox.setMargin(Searchbut, new Insets(ButtonMar, 0, 0, 0));
         });
 
+        Searchbut.setOnAction(e -> sceneManager.switchToAdminSearch(a));
 
         JFXButton LogOutBut = new JFXButton("Log out");
         LogOutBut.setMaxWidth(Double.MAX_VALUE);

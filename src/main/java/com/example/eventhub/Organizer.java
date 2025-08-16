@@ -24,6 +24,7 @@ public class Organizer extends Person implements Employee<Event>{
     Organizer(String username, String password, int yearOfBirth, int monthOfBirth, int dayOfBirth, int balance) {
         super(username, password, yearOfBirth, monthOfBirth, dayOfBirth);
         this.wallet = new Wallet(balance);
+        Database.people.add(this);
     }
 
     public double getBalance() {
