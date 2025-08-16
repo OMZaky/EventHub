@@ -533,7 +533,7 @@ public class Organizer_CRUD {
                 pwCom.getChildren().removeIf(node -> node instanceof Label);
                 String readvalue = (organizer.read(((Event)combobox.getValue())));
                 String[] readArr = readvalue.split("\\|");
-                HBox hb = new HBox(5);
+                VBox hb = new VBox(5);
                 for (String s : readArr) {
                     Label newlab = new Label(s);
                     newlab.setStyle(textNormal);
