@@ -141,7 +141,7 @@ public class Organizer_CRUD {
             double Labelmar = crudMain.getWidth()* 0.05;
             VBox.setMargin(crudnamelocate, new Insets(Labelmar, 0, 0, 0));
         });
-        crudnamelocate.setAlignment(Pos.CENTER_LEFT);
+        crudnamelocate.setAlignment(Pos.CENTER);
         Label CRUD = new Label("CRUD");
         CRUD.setStyle(textHeader);
         crudnamelocate.getChildren().add(CRUD);
