@@ -1,33 +1,32 @@
-## Event Management System
+# EventHub: Event Management System
 
-This Object Oriented Programming Project `Event Management System` is brought to you by the freshmen students of Ain Shams University, Faculty of Engineering, major Computer and Artificial Intelligence Engineering. 
+An Object-Oriented Programming (OOP) project designed to streamline and manage events effectively. Built with scalable software architecture in mind, this project demonstrates core software engineering principles, clean code structure, and robust documentation practices.
 
-## Provided by Team 16
+## 📌 Overview
+EventHub provides a structured digital approach to event management. Designed with a clear separation of concerns, the application leverages Java and CSS to deliver a cohesive user experience while maintaining a well-documented backend architecture.
 
-> Fahd Khaled Khataan 24P0073
+## ✨ Features
+> **Note:** Add the specific functionalities of your system here.
+* **Feature 1:** E.g., Secure user authentication and role management (Admin vs. Attendee).
+* **Feature 2:** E.g., Seamless event creation, scheduling, and tracking.
+* **Feature 3:** E.g., Automated ticket generation and RSVP handling.
 
-> Omar Akram Ahmed 24P0071
+## 🏗 Architecture & Design
+A strong emphasis was placed on software architecture and OOP design patterns during development. The project utilizes a detailed UML Class Diagram to map out the system's core components, relationships, and inheritance hierarchies.
 
-> Omar Ahmed Galal 24P0271
+* 📊 **[View the full UML Class Diagram](https://drive.google.com/file/d/1AlkZzupSHozEBaeerADNIdqY_HD3tBJi/view?usp=sharing)**
 
-> Omar Mohamed Khamis 24P0117
+## 🚀 Technologies Used
+* **Backend logic:** Java (98.3%)
+* **UI/Styling:** CSS (1.7%)
+* **Build & Dependency Management:** Maven (`pom.xml` and `mvnw` wrappers included)
 
-> Yassin Bassem Ibrahim 24P0378
+## 📁 Folder Structure
+The workspace is logically organized to separate source code from dependencies and compiled binaries:
 
-> Ziad Amr Mohamed Sobhi 24P0062
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## UML Diagram 
-[Class Diagram](https://drive.google.com/file/d/1AlkZzupSHozEBaeerADNIdqY_HD3tBJi/view?usp=sharing)
-
-> Click the link to view the full-size UML Class Diagram.
+```text
+├── src/main/  # Core source code and application logic
+├── lib/       # External dependencies and libraries
+├── bin/       # Compiled output files (generated automatically)
+├── .vscode/   # Workspace settings and configurations
+└── pom.xml    # Maven project object model
