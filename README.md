@@ -33,8 +33,8 @@ A strong emphasis was placed on software architecture and OOP design patterns du
 
 ## 🚀 Technologies Used
 
-* **Backend logic:** Java
-* **UI/Styling:** CSS
+* **Backend logic:** Java (98%)
+* **UI/Styling:** CSS (2%)
 * **Build & Dependency Management:** Maven
 
 ## 📁 Folder Structure
@@ -76,7 +76,8 @@ Mac/Linux:
 mvnw.cmd exec:java -Dexec.mainClass="Main" 
 ```
 
-(Note: Update `"Main"` with the actual package and class name of your main file if it is nested, e.g., `"com.eventhub.Main"`)
+(Note: Update `"Main"` with the actual package and class name of your main file if it is nested, 
+e.g., `"com.eventhub.Main"`)
 
 ## 👥 Meet Team
 
@@ -92,4 +93,4 @@ This project is proudly developed by students of Ain Shams University, Faculty o
 
 **Yassin Bassem Ibrahim (24P0378)**
 
-Ziad Amr Mohamed Sobhi (24P0062)
+**Ziad Amr Mohamed Sobhi (24P0062)**
