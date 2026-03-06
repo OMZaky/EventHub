@@ -49,18 +49,18 @@ The workspace is logically organized to separate source code from dependencies a
 └── pom.xml    # Maven project object model
 ```
 
-#⚙️ Setup and Installation
+# ⚙️ Setup and Installation
 
 Follow these steps to set up and run the application locally. The project uses Maven wrapper scripts, so you do not need to install Maven globally on your machine.
 
-##1. Clone the repository:
+## 1. Clone the repository:
 
 ```text
 git clone [https://github.com/OMZaky/EventHub.git](https://github.com/OMZaky/EventHub.git)
 cd EventHub
 ```
 
-##2. Compile the project:
+## 2. Compile the project:
 
 Windows:
 ```text
@@ -71,25 +71,25 @@ Mac/Linux:
 ./mvnw clean compile
 ```
 
-##3. Run the application:
+## 3. Run the application:
 ```text
 mvnw.cmd exec:java -Dexec.mainClass="Main" 
 ```
 
 (Note: Update "Main" with the actual package and class name of your main file if it is nested, e.g., "com.eventhub.Main")
 
-#👥 Meet Team
+# 👥 Meet Team
 
 This project is proudly developed by students of Ain Shams University, Faculty of Engineering, majoring in Computer and Artificial Intelligence Engineering:
 
-Fahd Khaled Khataan (24P0073)
+**Fahd Khaled Khataan (24P0073)**
 
-Omar Akram Ahmed (24P0071)
+**Omar Akram Ahmed (24P0071)**
 
-Omar Ahmed Galal (24P0271)
+**Omar Ahmed Galal (24P0271)**
 
-Omar Mohamed Khamis (24P0117)
+**Omar Mohamed Khamis (24P0117)**
 
-Yassin Bassem Ibrahim (24P0378)
+**Yassin Bassem Ibrahim (24P0378)**
 
 Ziad Amr Mohamed Sobhi (24P0062)
